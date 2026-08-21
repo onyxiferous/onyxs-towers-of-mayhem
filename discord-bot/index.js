@@ -29,9 +29,4 @@ client.once('ready', async () => {
     }
 });
 
-client.on('messageCreate', async (message) => {
-    // Ignore messages sent by bots
-    if (message.author.bot) return;
-});
-
 client.login(config.token);
