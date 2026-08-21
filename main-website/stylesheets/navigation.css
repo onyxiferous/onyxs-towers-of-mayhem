@@ -1,0 +1,481 @@
+.navigation.docs {
+    position: relative;
+    width: auto;
+    max-width: 270px;
+    min-height: 100%;
+
+    background: rgb(0, 0, 0);
+    border-right: 2px solid rgb(36, 41, 54);
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    box-sizing: border-box;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.navigation.docs header .flavor-text {
+    color: rgb(81, 83, 104);
+    font-size: 15pt;
+}
+
+.navigation.docs header .flavor-text, .navigation.docs header .headline {
+    display: block;
+    margin: 8px;
+}
+
+.navigation-submenu {
+    margin-left: 20px;
+    padding-left: 8px;
+    border-left: 2px solid rgb(36, 41, 54);
+    margin: 6px;
+
+    display: flex;
+    flex-direction: column;
+    transition: border-left-color 200ms ease;
+}
+
+.navigation-submenu .navigation-item {
+    font-size: 12pt;
+    font-family: "Source Sans 3", sans-serif;
+}
+
+.navigation-item.headline {
+    font-size: 16pt;
+    color: var(--icon-color);
+}
+
+.navigation-submenu {
+    margin: 0 0 0 24px;
+    padding-left: 8px;
+
+    border-left: 2px solid rgb(36, 41, 54);
+
+    display: flex;
+    flex-direction: column;
+    margin: 2px;
+}
+
+.navigation-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.navigation-submenu .icon-container {
+    margin-left: auto;
+
+    width: 24px;
+    height: 24px;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 4px;
+}
+
+.navigation-item {
+    color: inherit;
+        position: relative;
+    overflow: visible;
+}
+
+.navigation.docs .navigation-item {
+    position: relative;
+    z-index: 1;
+
+    margin: 1px;
+    padding: 3px 3px 3px 4px;
+
+    border-radius: 4px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    cursor: pointer;
+    width: calc(100% - 8px);
+}
+
+.navigation-item {
+    justify-content: space-between;
+}
+
+.navigation-item > .expand-icon {
+    margin-left: 0;
+    flex-shrink: 0;
+}
+
+.navigation-toggle + .navigation-item .expand-icon {
+    transition: transform 400ms cubic-bezier(0.610, 0.155, 0.270, 1.520);
+}
+
+.navigation-toggle:checked + .navigation-item .expand-icon {
+    transform: rotate(90deg);
+}
+
+
+
+.navigation-collapse > .navigation-submenu {
+    min-height: auto;
+    overflow: hidden; /* Ensures contents don't bleed out and cause extra scroll space */
+    margin-top: 2px;
+    margin-bottom: -2px;
+}
+
+.navigation-toggle:checked ~ .navigation-collapse {
+    grid-template-rows: 1fr;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    opacity: 1;
+    visibility: visible; /* Make visible immediately when opening */
+    transition:
+        grid-template-rows 400ms cubic-bezier(0.610, 0.155, 0.330, 1.190),
+        opacity 200ms ease,
+        margin 400ms ease,
+        visibility 0s linear 0s; /* No delay when becoming visible */
+}
+
+.navigation.docs .navigation-item .icon {
+    color: var(--icon-color);
+    background: color-mix(in srgb, var(--icon-color) 20%, transparent);
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.navigation-collapse {
+    display: grid;
+    grid-template-rows: 0fr;
+    min-height: auto;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden; /* Added to prevent inner elements from affecting layout/scroll */
+    transition:
+        grid-template-rows 400ms cubic-bezier(0.610, 0.155, 0.330, 1.190),
+        opacity 200ms ease,
+        margin 400ms ease,
+        visibility 0s linear 400ms; /* Delay visibility hidden until transition ends */
+}
+
+
+
+/* Root item hovered:
+   color all submenu bars */
+.navigation-group:has(> .navigation-item:hover)
+> .navigation-submenu {
+    border-left-color: var(--icon-color);
+}
+
+.navigation-branch:has(> .navigation-item:hover)
+> .navigation-submenu {
+    border-left-color: var(--icon-color);
+}
+
+.navigation-submenu .navigation-submenu .navigation-item .icon {
+    background: none;
+}
+
+.navigation-submenu .navigation-item::after {
+    content: "";
+    position: absolute;
+
+    left: -10px;
+    top: -4px;
+    bottom: -4px;
+
+    width: 2px;
+
+    background: var(--icon-color);
+    border-radius: 4px;
+
+    transform: scaleY(0);
+    transition: transform 150ms ease;
+}
+
+.navigation-submenu .navigation-item:hover {
+    background: color-mix(in srgb, var(--icon-color) 20%, transparent);
+}
+
+.navigation-submenu .navigation-item:hover::after {
+    transform: scaleY(1);
+}
+
+.navigation-submenu .navigation-item .icon {
+    margin-left: auto;
+    transform: translateY(125%) scale(1.5);
+    transition: transform 400ms cubic-bezier(0.175, 0.885, 0.310, 1.080);
+}
+
+.navigation-submenu .navigation-item:hover .icon {
+    transform: translateY(0) scale(0.8);
+}
+
+.navigation.docs .navigation-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        90deg,
+        color-mix(in oklab, var(--icon-color), #000 75%),
+        transparent
+    );
+
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 200ms cubic-bezier(0.175, 0.885, 0.310, 1.080);
+
+    z-index: -1;
+}
+
+.navigation.docs .navigation-item:hover::before {
+    transform: scaleX(1);
+}
+
+.navigation.docs .navigation-item > * {
+    position: relative;
+    z-index: 1;
+}
+
+.mobile-navigation-button {
+    position: absolute;
+
+    top: 8px;
+    left: 8px;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1000;
+
+    color: rgb(255, 255, 255);
+    background: rgb(20, 20, 20);
+
+    border: 2px solid rgb(36, 41, 54);
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateX(-60px) scale(0.8);
+
+    transition:
+        opacity 200ms ease,
+        visibility 0s linear 350ms,
+        transform 350ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        background 150ms ease;
+}
+
+
+
+
+.mobile-navigation-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.mobile-navigation-button:hover {
+    background: rgb(36, 41, 54);
+}
+
+.mobile-navigation-bar {
+    display: none;
+}
+
+.root-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: inherit;
+}
+
+nav .flavor-text::before,
+nav .flavor-text::after {
+    display: none;
+}
+
+.mobile-navigation-button .material-symbols-rounded {
+    font-size: 24px;
+    transition: transform 250ms ease;
+}
+
+.navigation.docs .navigation-item {
+        transition: padding 200ms ease;
+}
+
+.navigation.docs * {
+    text-decoration: none;
+}
+
+/* Mobile */
+@media screen and (max-width: 700px) {
+
+    .mobile-navigation-bar {
+        display: block;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+
+        width: 56px;
+
+        background: rgb(0, 0, 0);
+        border-right: 2px solid rgb(36, 41, 54);
+
+        z-index: 998;
+        pointer-events: none;
+    }
+
+        body {
+        padding-left: 56px;
+        box-sizing: border-box;
+    }
+
+
+    .mobile-navigation-button {
+        position: absolute;
+
+        top: 8px;
+        left: 8px;
+
+        width: 40px;
+        height: 40px;
+
+        opacity: 0.75;
+        visibility: visible;
+        pointer-events: auto;
+
+        transform: translateX(0) scale(1);
+
+        z-index: 1000;
+
+        transition:
+            opacity 250ms ease,
+            transform 350ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
+            background 150ms ease,
+            left 350ms cubic-bezier(0.610, 0.155, 0.330, 1.190);
+    }
+
+
+    .navigation.docs {
+        position: absolute;
+
+        top: 0;
+        bottom: 0;
+        left: 0;
+
+        width: min(300px, 85vw);
+
+        z-index: 999;
+
+        transform: translateX(-100%);
+
+        transition:
+            transform 350ms cubic-bezier(0.610, 0.155, 0.330, 1.190),
+            box-shadow 500ms ease;
+
+        box-shadow: none;
+
+        display: flex;
+    }
+
+
+    .mobile-navigation-toggle:checked ~ .navigation.docs {
+        transform: translateX(0);
+
+        box-shadow:
+            0 0 15px 0 rgba(0, 0, 0, 0.8);
+    }
+
+
+    .mobile-navigation-toggle:checked ~ .mobile-navigation-button {
+        left: min(250px, 85vw);
+    }
+
+
+    .mobile-navigation-toggle:checked
+    + .mobile-navigation-bar
+    + .mobile-navigation-button
+    .material-symbols-rounded {
+        transform: rotate(90deg);
+    }
+
+}
+
+@media (pointer: coarse) and (hover: none) {
+.navigation.docs .navigation-item {
+    padding: 10px;
+}
+}
+
+.navigation-branch > .navigation-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 3px 3px 3px 4px;
+    box-sizing: border-box;
+}
+
+/* The actual navigation link */
+.navigation-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    flex: 1;
+    min-width: 0;
+
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Push the icon inside the link to the right */
+.navigation-link .icon-container {
+    margin-left: auto;
+}
+
+/* Chevron gets its own clickable area */
+.expand-button {
+    flex: 0 0 28px;
+
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+/* Chevron animation */
+.expand-button .expand-icon {
+    transition:
+        transform 400ms cubic-bezier(
+            0.610,
+            0.155,
+            0.270,
+            1.520
+        );
+}
+
+/* Rotate when submenu is open */
+.navigation-toggle:checked
++ .navigation-item
+.expand-button
+.expand-icon {
+    transform: rotate(90deg);
+}

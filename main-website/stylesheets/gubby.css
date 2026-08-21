@@ -1,0 +1,89 @@
+#gubby {
+    animation-name: gubby-idle;
+    animation-duration: 75ms;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-direction: alternate;
+    animation-play-state: running;
+    cursor: grab;
+}
+
+#gubby-status {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    bottom: 0;
+    width: fit-content;
+    backdrop-filter: grayscale(100%) brightness(50%) blur(4px);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 5;
+}
+
+#gubby-status p {
+    margin: 1px;
+    padding: 8px 16px;
+    font-size: 18pt;
+
+    animation-name: status-fade;
+    animation-duration: 4000ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes status-fade {
+    0% {
+        opacity: 0;
+        transform: translateX(0);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+@keyframes gubby-idle {
+    0% {
+        transform: translate(2%, -2%) rotate(3deg);
+    }
+
+    50% {
+        transform: translate(-2%, 2%) rotate(-3deg); 
+    }
+
+    100% {
+        transform: translate(0%, -3%);
+    }
+}
+
+@keyframes gubby-squish {
+ 0% {
+        transform: scale3d(1, 1, 1);
+    }
+
+    25% {
+        transform: scale3d(0.85, 1.15, 1);
+    }
+
+    50% {
+        transform: scale3d(1.12, 0.92, 1);
+    }
+
+    75% {
+        transform: scale3d(0.97, 1.03, 1);
+    }
+
+    100% {
+        transform: scale3d(1, 1, 1);
+    }
+}

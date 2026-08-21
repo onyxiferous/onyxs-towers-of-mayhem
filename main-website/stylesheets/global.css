@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+25&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+body {
+    background-color: rgb(15, 15, 22);
+    color: white;
+    overflow: hidden;
+}
+
+* {
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.material-symbols-rounded {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+::view-transition-group(root) {
+  animation-duration: 0.5s;
+}
+
+/* Custom keyframes for sliding pages */
+@keyframes slide-out {
+  to { transform: translateX(-100%); }
+}
+@keyframes slide-in {
+  from { transform: translateX(100%); }
+}
+
+/* Apply keyframes to the old and new pages */
+::view-transition-old(root) {
+  animation: 150ms ease-in both slide-out;
+}
+::view-transition-new(root) {
+  animation: 150ms ease-out both slide-in;
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+/* For documentation */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #212024;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: #7a5e56;
+    border-radius: 6px;
+      border: 2px solid transparent;
+    background-clip: padding-box; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ff9151;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+h1 {
+    font-size: 46pt;
+    color: rgb(112, 157, 255);
+}
+
+h2 {
+    position: relative;
+    font-size: 36pt;
+}
+
+h3 {
+    font-size: 32pt;
+}
+
+p, ul, ol, button, th, td {
+    font-size: 16pt;
+    font-family: "Source Sans 3", sans-serif;
+}
+
+.para {
+    line-height: 1.5em;
+}
+
+#game-heading {
+  font-size: 24pt;
+}
+
+button {
+    background: black;
+    padding: 4px 8px;
+    border: 1px solid grey;
+}
+
+button a {
+    color: white;
+        text-decoration: none;
+}
+
+.flavor-text, .headline, h1, h2, h3, h4 {
+    position: relative;
+  font-weight: 400;
+  font-style: normal;
+  width: fit-content;
+      font-family: "Jersey 25" !important;
+}
+
+.flavor-text {
+    position: relative;
+}
+
+/* Inner ring */
+.flavor-text::before {
+    content: "";
+    position: absolute;
+
+    width: 1em;
+    height: 1em;
+
+    border: 4px dashed rgb(105, 126, 219);
+    background-color: rgb(5, 5, 5);
+
+    left: 0;
+    top: 50%;
+
+    transform: translate(-20%, -50%) rotate(0deg);
+    transform-origin: center;
+
+    mix-blend-mode: exclusion;
+    pointer-events: none;
+
+    animation: flavor-ring-forward 20s linear infinite;
+}
+
+.flavor-text::before,
+.flavor-text::after {
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.45;
+    border-radius: 8px;
+}
+
+/* Outer ring */
+.flavor-text::after {
+    content: "";
+    position: absolute;
+
+    width: 1em;
+    height: 1em;
+
+    border: 2px dashed rgb(47, 57, 100);
+
+    left: 0;
+    top: 50%;
+
+    transform: translate(-20%, -50%) rotate(0deg) scale(1.3);
+    transform-origin: center;
+
+    mix-blend-mode: exclusion;
+    pointer-events: none;
+    animation: flavor-ring-backward 10s linear infinite;
+}
+
+/* Clockwise */
+@keyframes flavor-ring-forward {
+    0% {
+        transform: translate(-0%, -50%) rotate(0deg) scale(0.9);
+    }
+
+    50% {
+        transform: translate(-0%, -50%) rotate(180deg) scale(0.75);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translate(-0%, -50%) rotate(360deg) scale(0.9);
+    }
+}
+
+/* Counter-clockwise */
+@keyframes flavor-ring-backward {
+    0% {
+        transform: translate(-0%, -50%) rotate(360deg) scale(0.8);
+    }
+
+    50% {
+        transform: translate(-0%, -50%) rotate(180deg) scale(0.7);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translate(-0%, -50%) rotate(0deg) scale(0.8);
+    }
+}

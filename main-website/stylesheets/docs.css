@@ -1,0 +1,10 @@
+.docs.content {
+    display: flex;
+    gap: 8px;
+}
+
+body.content.docs {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}

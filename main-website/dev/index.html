@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://onyxs-towers.space">
+    <meta property="og:title" content="Onyx's Towers of Mayhem">
+    <meta property="og:description" content="Our own Tower Kit API">
+    <meta property="og:image" content="">
+
+    <link rel="stylesheet" href="/stylesheets/sections.css" />
+    <link rel="stylesheet" href="/stylesheets/global.css" />
+    <link rel="stylesheet" href="/stylesheets/docs.css" />
+    <link rel="stylesheet" href="/stylesheets/scaling.css" />
+    <link rel="stylesheet" href="/stylesheets/navigation.css" />
+        <link rel="stylesheet" href="/stylesheets/tables.css" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=handymangavelbrickeditsquaretextfieldsinstalldesktopvideogameassetstackedbarchartcounter1counter2counter3counter4counter5datausagefolderdatabook2copyright" />
+
+    <script defer src="/scripts/sections.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title></title>
+</head>
+
+<body class="content docs">
+
+    <input type="checkbox" id="mobile-navigation-toggle" class="mobile-navigation-toggle">
+
+    <div class="mobile-navigation-bar"></div>
+
+    <label for="mobile-navigation-toggle" class="mobile-navigation-button">
+        <span class="material-symbols-rounded">
+            menu
+        </span>
+    </label>
+
+
+    <nav class="navigation docs">
+        <header>
+            <p id="game-heading" class="headline">Onyx's Towers of Mayhem</p>
+            <small class="flavor-text">navigation.html</small>
+        </header>
+
+        <!-- Home -->
+
+        <div class="navigation-group" style="--icon-color: rgb(253, 159, 116);">
+
+
+            <input type="checkbox" id="nav-home" class="navigation-toggle">
+
+
+
+            <label class="navigation-item headline">
+                <a class="root-dropdown" href="../index">
+                    <span class="icon-container">
+                        <span class="material-symbols-rounded icon">
+                            home
+                        </span>
+                    </span>
+
+                    <span>Home</span>
+                </a>
+
+                <span class="material-symbols-rounded expand-icon">
+                    chevron_right
+                </span>
+            </label>
+
+
+        </div>
+
+        <div class="nav-audio-system" style="--icon-color: rgb(253, 116, 196);">
+
+
+
+            <label for="nav-audio-system" class="navigation-item headline">
+                <a class="root-dropdown" href="#audio-system">
+                    <span class="icon-container">
+                        <span class="material-symbols-rounded icon">
+                            instant_mix
+                        </span>
+                    </span>
+
+                    <span>Audio System</span>
+                </a>
+
+                <span class="material-symbols-rounded expand-icon">
+                    chevron_right
+                </span>
+            </label>
+
+        </div>
+
+
+        <!-- Documentation -->
+        <div class="navigation-group" style="--icon-color: rgb(94, 111, 128);">
+
+            <input type="checkbox" id="nav-documentation" class="navigation-toggle">
+
+
+            <label for="nav-documentation" class="navigation-item headline">
+                <a class="root-dropdown" href="#documentation">
+                    <span class="icon-container">
+                        <span class="material-symbols-rounded icon">
+                            book_2
+                        </span>
+                    </span>
+
+                    <span>Documentation</span>
+                </a>
+
+                <span class="material-symbols-rounded expand-icon">
+                    chevron_right
+                </span>
+            </label>
+
+            <div class="navigation-collapse">
+
+                <div class="navigation-submenu">
+
+                    <!-- Legal -->
+                    <div class="navigation-branch">
+
+                        <input type="checkbox" id="nav-legal" class="navigation-toggle">
+
+                        <label for="nav-legal" class="navigation-item">
+                            Legal
+
+                            <span class="icon-container">
+                                <span class="material-symbols-rounded icon">
+                                    copyright
+                                </span>
+                            </span>
+
+                            <span class="material-symbols-rounded expand-icon">
+                                chevron_right
+                            </span>
+                        </label>
+
+                        <div class="navigation-collapse">
+                            <div class="navigation-submenu">
+
+                                <a class="navigation-item">
+                                    License
+
+                                    <span class="icon-container">
+                                        <span class="material-symbols-rounded icon">
+                                            license
+                                        </span>
+                                    </span>
+                                </a>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- API -->
+                    <a class="navigation-item">
+                        API
+
+                        <span class="icon-container">
+                            <span class="material-symbols-rounded icon">
+                                folder_data
+                            </span>
+                        </span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Creating a tower -->
+        <div class="navigation-group" style="--icon-color: rgb(79, 167, 250);">
+
+            <input type="checkbox" id="nav-creating-tower" class="navigation-toggle">
+
+            <label for="nav-creating-tower" class="navigation-item headline">
+                <a class="root-dropdown" href="#first-steps">
+                    <span class="icon-container">
+                        <span class="material-symbols-rounded icon">
+                            handyman
+                        </span>
+                    </span>
+
+                    <span>Developer Guide</span>
+                </a>
+
+                <span class="material-symbols-rounded expand-icon">
+                    chevron_right
+                </span>
+            </label>
+
+            <div class="navigation-collapse">
+
+                <div class="navigation-submenu">
+
+                    <!-- Tower rules -->
+                    <div class="navigation-branch">
+
+                        <a href="#creating-a-tower" class="navigation-item">
+                            Creating a Tower
+
+                            <span class="icon-container">
+                                <span class="material-symbols-rounded icon">
+                                    article_shortcut
+                                </span>
+                            </span>
+                        </a>
+
+
+                        <input type="checkbox" id="nav-tower-rules" class="navigation-toggle">
+
+                        <div class="navigation-item">
+
+                            <a href="#tower-rules" class="navigation-link">
+                                <span>Tower rules</span>
+
+                                <span class="icon-container">
+                                    <span class="material-symbols-rounded icon">
+                                        gavel
+                                    </span>
+                                </span>
+                            </a>
+
+                            <label for="nav-tower-rules" class="expand-button">
+                                <span class="material-symbols-rounded expand-icon">
+                                    chevron_right
+                                </span>
+                            </label>
+
+                        </div>
+
+                        <div class="navigation-collapse">
+                            <div class="navigation-submenu">
+
+                                <a href="#building-rules" class="navigation-item"
+                                    style="--icon-color: rgb(255, 132, 32);">
+                                    Building
+
+                                    <span class="icon-container">
+                                        <span class="material-symbols-rounded icon">
+                                            brick
+                                        </span>
+                                    </span>
+                                </a>
+
+                                <a href="#submissions-rules" class="navigation-item"
+                                    style="--icon-color: rgb(85, 233, 122);">
+                                    Submissions
+
+                                    <span class="icon-container">
+                                        <span class="material-symbols-rounded icon">
+                                            edit_square
+                                        </span>
+                                    </span>
+                                </a>
+
+                                <a href="#name-rules" class="navigation-item" style="--icon-color: rgb(208, 78, 219);">
+                                    Name
+
+                                    <span class="icon-container">
+                                        <span class="material-symbols-rounded icon">
+                                            text_fields
+                                        </span>
+                                    </span>
+                                </a>
+
+
+                                </a>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Prerequisites -->
+                    <a href="#prerequisites" class="navigation-item">
+                        Prerequisites
+
+                        <span class="icon-container">
+                            <span class="material-symbols-rounded icon">
+                                install_desktop
+                            </span>
+                        </span>
+                    </a>
+
+                    <!-- Tower place -->
+                    <a href="#tower-place-help" class="navigation-item">
+                        Tower place
+
+                        <span class="icon-container">
+                            <span class="material-symbols-rounded icon">
+                                videogame_asset
+                            </span>
+                        </span>
+                    </a>
+
+                    <!-- Tower types -->
+                    <div class="navigation-branch">
+
+                        <input type="checkbox" id="nav-tower-types" class="navigation-toggle">
+
+                        <div class="navigation-item">
+
+                            <a href="#tower-types" class="navigation-link">
+                                <span>Tower types</span>
+
+                                <span class="icon-container">
+                                    <span class="material-symbols-rounded icon">
+                                        stacked_bar_chart
+                                    </span>
+                                </span>
+                            </a>
+
+                            <label for="nav-tower-types" class="expand-button">
+                                <span class="material-symbols-rounded expand-icon">
+                                    chevron_right
+                                </span>
+                            </label>
+
+                        </div>
+
+                        <div class="navigation-collapse">
+                            <div class="navigation-submenu">
+
+                                <a href="#tower-type-bastion" class="navigation-item"
+                                    style="--icon-color: rgb(245, 215, 82);">
+                                    Bastion
+
+                                    <span class="icon-container">
+                                        <span class="material-symbols-rounded icon">
+                                            counter_1
+                                        </span>
+                                    </span>
+                                </a>
+
+                                <a href="#tower-type-crypt" class="navigation-item"
+                                    style="--icon-color: rgb(245, 169, 82);">
+                                    Crypt
+
+                                    <span class="icon-container">
+                                        <span class="material-symbols-rounded icon">
+                                            counter_2
+                                        </span>
+                                    </span>
+                                </a>
+
+                                <a href="#tower-type-citadel" class="navigation-item"
+                                    style="--icon-color: rgb(179, 81, 130);">
+                                    Citadel
+
+                                    <span class="icon-container">
+                                        <span class="material-symbols-rounded icon">
+                                            counter_3
+                                        </span>
+                                    </span>
+                                </a>
+
+                                <a href="#tower-type" class="navigation-item" style="--icon-color: rgb(142, 124, 195);">
+                                    Tower
+
+                                    <span class="icon-container">
+                                        <span class="material-symbols-rounded icon">
+                                            counter_4
+                                        </span>
+                                    </span>
+                                </a>
+
+                                <a href="#tower-type-steeple" class="navigation-item"
+                                    style="--icon-color: rgb(82, 153, 245);">
+                                    Steeple
+
+                                    <span class="icon-container">
+                                        <span class="material-symbols-rounded icon">
+                                            counter_5
+                                        </span>
+                                    </span>
+                                </a>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Limits -->
+                    <a href="#limits" class="navigation-item" style="--icon-color: rgb(255, 70, 90);">
+                        Limits
+
+                        <span class="icon-container">
+                            <span class="material-symbols-rounded icon">
+                                data_usage
+                            </span>
+                        </span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="block-content">
+        <div class="block-content-inner wide">
+            <section id="first-steps">
+                <h1 class="flavor-text">Welcome</h1>
+                <p class="para">Welcome to the Tower Creation Guide for Onyx's Towers of Mayhem.<br>
+                    This comprehensive guide will walk you through how to create a quality tower for OToM, as well as
+                    our creation guidelines, tower types, and game mechanics.<br>
+                    Don't have Roblox Studio experience? Don't worry - we also go over some of the basics that are
+                    needed in Studio. Without further ado, let's get started!<br></p>
+            </section>
+
+            <section id="creating-a-tower">
+                <h2>Creating a Tower</h2>
+                <p class="para">Section not implemented yet.</p>
+            </section>
+
+            <section id="tower-rules">
+                <h2>Tower rules</h2>
+                <p class="para">Our tower creation guidelines differ quite a bit from EToH's in terms of leniency, but
+                    keeps most of its rules respected its rules for reference). Before creating a tower, always remember
+                    to check back here, as the tower creation guidelines may differ through the game's legacy and may
+                    change at any point of time.</p>
+
+                <section id="building-rules">
+                    <h3>Building</h3>
+                    <ul class="para">
+                        <li>
+                            To prevent mix-ups, you can only use our dedicated tower kit as it has
+                            specific features that aren't included in EToH's. It's built from the
+                            ground up, so unfortunately converting an EToH submitted tower to an
+                            OToM compatible tower is not possible.
+                        </li>
+
+                        <li>
+                            No free models, generative AI, content violating Roblox's ToS,
+                            or malicious assets.
+                        </li>
+
+                        <li>
+                            For now, only CCO's (Custom Client Objects) can be used for
+                            Esteemed Builders.
+                        </li>
+
+                        <li>
+                            Please keep the building format intact (will be posted later.)
+                        </li>
+
+                        <li>
+                            The total floor count must be in coordination with the tower type's
+                            intended floor count. For more information, refer to the Tower types section.
+                        </li>
+
+                        <li>
+                            A tower must have a frame OR something that vaguely resembles a frame.
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="submissions-rules">
+                    <h3>Submissions</h3>
+                    <ul class="para">
+                        <li>
+                            You may necropost your submission, but only if it has been at least a week
+                            and no one has reviewed your tower yet. Please note that necroposting
+                            repetitively will not make your tower be reviewed faster and may result
+                            in punishment.
+                        </li>
+
+                        <li>
+                            Credit users that built at least 10% of the tower's gameplay in certain sections.
+                        </li>
+
+                        <li>
+                            Joke towers will not be tolerated within the server's actual submission channel.
+                            However, you can submit those towers in our upcoming joke subrealm submission
+                            channel (will be posted soon.) Otherwise, don't post broken, old, or
+                            low-effort towers.
+                        </li>
+
+                        <li>
+                            By submitting a tower, you agree that your tower can be removed if serious
+                            matters occur involving you within your role in EToH and there are multiple
+                            allegations or controversy.
+                        </li>
+                    </ul>
+                    <p>A short rundown of what to include in your submission is your tower's name, place (must be made
+                        in Studio and publicly accessible), and the intended difficulty of the tower.</p>
+                </section>
+
+                <section id="name-rules">
+                    <h3>Name</h3>
+                    <p class="para">Each tower has a unique identity; its name. But there are a few ground rules:</p>
+                    <ul class="para">
+                        <li>
+                            The tower name must start with "[Tower/Citadel/Steeple…] of" before the name. Cannot exceed
+                            50 characters.
+                        </li>
+
+                        <li>
+                            The tower name must not conflict with any other submitted towers in the game and connected
+                            games (excluding EToH!)
+                        </li>
+
+                        <li>
+                            Make sure the tower name is in line with Roblox's Terms of Service: does not conflict with
+                            any controversial or political events or feed into a problematic issue in general. Your
+                            tower name may be filtered via Roblox's API and may not be used if it goes against it.
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="prerequisites">
+                    <h2>Prerequisites</h2>
+                    <p class="para">You need a functional computer in order to create a tower because Roblox Studio is
+                        only available on PC. An old laptop that's been collecting dust in the corner? That probably
+                        works. An ancient iPhone SE? No. Don't even try it.
+                        WIP, subject to change
+                    </p>
+                </section>
+
+                <section id="tower-place-help">
+                    <h2>Tower place</h2>
+                    <ul class="para">
+                        <li>
+                            Must provide a functional Noclip and Heal tool within StarterPack.
+                        </li>
+
+                        <li>
+                            Tower music must be provided if possible. Make sure the music is at least
+                            copyright-free/free use OR
+                            you have permission to use songs from a certain artist. Consider using a tool like eProves
+                            to check
+                            if a song is copyright-free or not. If you're not sure - ask us.
+                        </li>
+
+                        <li>
+                            Tower place must at least have a 16+ age restriction.
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="tower-types">
+                    <h2>Tower types</h2>
+                    <p class="para">Here you can find all of OToM's tower types. Some are exclusive to this game!</p>
+
+                    <section id="tower-type-bastion">
+                        <h3>Bastion</h3>
+                        <p class="para">Obviously, a bastion is a beheamoth. It's the tallest tower type we currently
+                            have available. Bastions usually consist of grueling (mostly purist) gameplay and are
+                            elusively known for their length (averaging around 3-6 hours long), as well as their harsh
+                            punishment.
+                            Bastions may have multiple basement/outside/dropper sections and are not counted as
+                            individual floors. The dimension of each floor ranges from 125x125 to 150x150. Individual
+                            floors can be extended up to 250 studs outwards for each direction.
+                            The difficulty of a bastion ranges between Remorseless and Terrifying. There can only be one
+                            bastion in each sector, serving as a finale. Completing this tower type currently yields a
+                            staggering 20 tower points and counts as one tower.
+                            Bastions can have between 50 and 100 floors and require a separate game/place connected to
+                            OToM with forced ULDM in order to be playable due to their extreme part count, lag, and loss
+                            of maintainablity if simply kept ingame. The win message is global.
+                        </p>
+                    </section>
+
+                    <section id="tower-type-crypt">
+                        <h3>Crypt</h3>
+                        <p class="para">Crypts are our second-tallest tower type. While as not quite as long as a
+                            typical citadel (around 2-3 hours long), crypts could be comparable to a 'mini bastion' due
+                            to their similar dimensions. Crypts are intended to be secluded, so outside gameplay should
+                            be minimal.
+                            Crypts may have multiple basement/outside/dropper sections and are not counted as individual
+                            floors. The dimension of each floor ranges from 120x120 to 130x130. Individual floors can be
+                            extended up to 50 studs outwards for each direction.
+                            The difficulty of a crypt ranges between Challenging and Terrifying. There can be a maximum
+                            of three crypts in each sector and one in each area within that sector. Crypts are optional
+                            and are not required to complete each sector. Therefore, they cannot be included in area
+                            requirements. Completing this tower type currently yields ⌈5+|(f30)|⌉ tower points, maxing
+                            out to 6.5 tower points.
+                        </p>
+                    </section>
+
+                    <section id="tower-type-citadel">
+                        <h3>Citadel</h3>
+                        <p class="para">Citadels are essentially a longer tower type. Usually, citadels take an hour or
+                            two to complete in full, but may be a tad bit longer due to long basement, outside, or
+                            dropper sections. Citadels may have some basement/outside/dropper sections and are typically
+                            not counted as floors, but must be used sparingly. The dimension of each floor ranges from
+                            100x100 to 110x110. Individual floors can be extended up to 200 studs outwards for each
+                            direction.
+                            The difficulty of a citadel ranges between Hard and Terrifying; breaking EToH's 'no
+                            soul-crushing citadels' convention. There can only be one citadel in each area, and must be
+                            somewhat easily accessible depending on the difficulty of the citadel. Completing this tower
+                            type currently grants ⌈2+|(f12)|⌉ tower points, maxing out to 4 tower points.
+                            Citadels can have between 12 to 28 floors and the win message is global.
+                        </p>
+                    </section>
+
+                    <section id="tower-type">
+                        <h3>Tower</h3>
+                        <p class="para">Towers. The baseline - the gold standard. Typically, towers can take as short as
+                            10 minutes and as long as about an hour. Towers may have two brief basement sections (not
+                            rooms; individual sections) and two small dropper sections, but both must be used sparingly.
+                            Outside sections (counted as outside of the main frame) do not have a specific threshold.
+                            The dimension of each floor is same as EToH's standard - being only 100x100. The difficulty
+                            of a tower can range between Easy and Arduous . Towers only give a singular tower point, and
+                            there are no exceptions to this rule.
+                            Towers have between 10 floors and may have 9 floors under special conditions. The win
+                            message is global for soul-crushing towers.
+                        </p>
+                    </section>
+
+                    <section id="tower-type-steeple">
+                        <h3>Steeple</h3>
+                        <p class="para">Steeples are smaller towers. The length of a steeple depends on its gameplay,
+                            but has the same length range as a standard tower. Steeples may have one short basement
+                            section and one small dropper section. The dimension of each floor varies between 80x80 and
+                            100x100. The difficulty of a steeple can range between Easy and Arduous. Steeples give 12
+                            tower point.
+                            Steeples have between 4 and 8 floors. Like towers, soul-crushing win messages are global.
+                        </p>
+                    </section>
+                </section>
+
+                <section id="limits">
+                    <h2>Limits</h2>
+                    <table class="part-limit-table">
+    <thead>
+        <tr>
+            <th class="empty-corner"></th>
+            <th class="header-normal">Normal</th>
+            <th class="header-ebuilder">E. Builder</th>
+            <th class="header-ldm">With LDM</th>
+            <th class="header-uldm">With ULDM</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="row-bastions">Bastions</td>
+            <td colspan="3" class="na-cell">Out of Range</td>
+            <td class="num">150,000</td>
+        </tr>
+        <tr>
+            <td class="row-crypts">Crypts</td>
+            <td colspan="2" class="na-cell">Out of Range</td>
+            <td class="num">75,000</td>
+            <td class="num">85,000</td>
+        </tr>
+        <tr>
+            <td class="row-citadels">Citadels</td>
+            <td class="num">25,000</td>
+            <td class="num">30,000</td>
+            <td class="num">35,000</td>
+            <td class="num">65,000</td>
+        </tr>
+        <tr>
+            <td class="row-towers">Towers</td>
+            <td class="num">12,500</td>
+            <td class="num">15,000</td>
+            <td class="num">25,000</td>
+            <td class="num">50,000</td>
+        </tr>
+        <tr>
+            <td class="row-steeples">Steeples</td>
+            <td class="num">10,000</td>
+            <td class="num">12,000</td>
+            <td class="num">20,000</td>
+            <td class="num">65,000</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>E. Builder = Esteemed Builder role via Discord server.<br>
+With LDM and ULDM means that if part threshold of the Normal/E. Builder tower part is exceeded… that amount will be used instead with mandatory LDM+ULDM with a warning shown before entering.<br>
+Please ask us first if you want your bastion, crypt, or citadel to have an increased part count. We pride creativity. :)
+</p>
+
+                    <p class="para"></p>
+                </section>
+
+            </section>
+
+        </div>
+    </div>
+</body>
+
+</html>

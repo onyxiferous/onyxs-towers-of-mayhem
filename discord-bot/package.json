@@ -1,0 +1,16 @@
+{
+  "name": "onyxs-towers-discord-bot",
+  "version": "0.0.1",
+  "description": "A discord bot for the Onyx's Towers Discord server.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "discord.js": "^14.27.0"
+  }
+}
