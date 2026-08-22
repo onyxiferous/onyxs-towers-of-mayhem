@@ -3,12 +3,8 @@
   "version": "0.1.4",
   "description": "A discord bot for the Onyx's Towers Discord server.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "onyx",
+  "license": "MIT",
   "type": "commonjs",
   "dependencies": {
     "discord.js": "^14.27.0",
