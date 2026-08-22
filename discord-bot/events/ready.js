@@ -1,7 +1,7 @@
-const { Events, ActivityType, inlineCode } = require('discord.js');
+const { Events, ActivityType, EmbedBuilder, inlineCode } = require('discord.js');
 const { logSuccess, logSection, logFailure, logAsync, logWarning, logPromise } = require('../scripts/logger');
 const { isCurrentlyInMaintenance } = require('../scripts/maintenance.js');
-const { embedMaintenanceMode, embedOnline } = require('../formatting/embeds.js');
+const { embedMaintenanceMode, embedOnline, embedCouldn_tFindChannel } = require('../formatting/embeds.js');
 const { generateRundown } = require('../scripts/server-usage.js');
 const { execSync } = require('child_process');
 const { readJsonFile, updateJsonField } = require('../scripts/json.js');
@@ -56,27 +56,52 @@ function applyStatus(maintenanceMode, client) {
 }
 
 async function sendNotification(maintenanceMode, client) {
+    const unix = Math.floor(Date.now() / 1000);
     const readyMessageState = await readJsonFile(readyMessageStatePath).catch(logFailure);
     const channel = await client.channels.fetch(readyMessageState.readyMessageChannelId).catch(() => null);
-    const fallbackChannel = await client.channels.fetch(readyMessageState.fallbackChannelId).catch(logFailure('I couldn\'t send the message in the fallback channel - you\'re on your own!'));
+    const fallbackChannel = await client.channels.fetch(readyMessageState.fallbackChannelId)
+    .catch((error) => {
+        logFailure('I couldn\'t send the message in the fallback channel - you\'re on your own!', error);
+        return null;
+    });
 
     if (!channel && fallbackChannel) {
-        await channel.messages.fetch()
+        const warningEmbed = EmbedBuilder.from(embedCouldn_tFindChannel);
+        const targetChannelText = channel?.id ? `<#${channel.id}>` : "...wait hold up I don't know...";
+        const updatedDescription = (warningEmbed.data.description || '')
+            .replace('|TARGET_CHANNEL|', targetChannelText)
+            .replace('|COMMAND_SOURCE|', 'ready.js');
+
+        warningEmbed.setDescription(updatedDescription);
+
+        await fallbackChannel.send({ embeds: [warningEmbed] })
+        logWarning('Sent the fallback message. Do better next time.')
         return logFailure('Invalid target channel! Please set the correct channel ID within /shared-data/ready-message.json.');
     }
 
     if (!maintenanceMode) {
         const ubuntuVersion = execSync('lsb_release -sr').toString().trim() || 'unknown';
         const rundown = await generateRundown();
-        embedOnline.setFields([
-            {
-                name: 'server information',
-                value: `provider: ${inlineCode('oracle_cloud@ubuntu v' + ubuntuVersion)}\n${rundown}`
-            }
-        ]);
+        embedOnline.spliceFields(0, 1, {
+            name: 'server information',
+            value: `provider: ${inlineCode('oracle_cloud@ubuntu v' + ubuntuVersion)}\n${rundown}`,
+            inline: true,
+    });
     }
 
-    const targetEmbed = maintenanceMode ? embedMaintenanceMode : embedOnline;
+    const targetEmbed = EmbedBuilder.from(maintenanceMode ? embedMaintenanceMode : embedOnline);
+
+    if (targetEmbed.data.fields && targetEmbed.data.fields[1]) {
+        const currentValue = targetEmbed.data.fields[1].value || '';
+        const updatedValue = currentValue.replace(/\|NOW_TIMESTAMP\||<t:\d+:R>/g, `<t:${unix}:R>`);
+
+        // Splice field 1 with updated value
+        targetEmbed.spliceFields(1, 1, {
+            name: targetEmbed.data.fields[1].name,
+            value: updatedValue,
+            inline: true
+        });
+    }
 
     try {
         const existingMessage = (readyMessageState.readyMessageId && !maintenanceMode)

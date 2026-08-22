@@ -5,7 +5,7 @@ const { generateRundown } = require('../../scripts/server-usage');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('server-status')
-        .setDescription('Check up on the bot\'s server status.'),
+        .setDescription('check up on the bot\'s server status.'),
 
     async execute(interaction) {
         const embed = EmbedBuilder.from(embedServerStatus);

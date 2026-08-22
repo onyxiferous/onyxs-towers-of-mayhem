@@ -16,6 +16,7 @@ const embedOnline = new EmbedBuilder()
     .setFooter({ text: 'bot created by onyx' })
     .addFields(
 		{ name: 'server information', value: 'failed to load!' },
+        { name: 'last updated', value: '|NOW_TIMESTAMP|' }
 	);
 
 const embedMaintenanceMode = new EmbedBuilder()
@@ -27,7 +28,7 @@ const embedMaintenanceMode = new EmbedBuilder()
 const embedServerStatus = new EmbedBuilder()
     .setColor('Grey')
     .setTitle('server status and performance')
-    .setDescription('failed to load!');
+    .setDescription('failed to load!')
 
 const embedCouldn_tFindChannel = new EmbedBuilder()
     .setColor('Red')
@@ -38,6 +39,6 @@ module.exports = {
     embedMaintenanceInteraction,
     embedMaintenanceMode,
     embedOnline,
-
     embedServerStatus,
+    embedCouldn_tFindChannel,
 };
