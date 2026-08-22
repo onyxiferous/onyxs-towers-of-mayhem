@@ -1,32 +1,37 @@
-const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
+const { Client, GatewayIntentBits, Collection } = require('discord.js'); // 1. Added Collection here
 const config = require('./config.json');
+const fs = require('node:fs');
+const path = require('node:path');
+const { loadCommandsFromDir } = require('./scripts/reload-commands');
+const { logSuccess, logSection } = require('./scripts/logger');
 
-const client = new Client({
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent
-    ]
+logSection('JavaScript started!')
+
+const client = new Client({ 
+    intents: [ 
+        GatewayIntentBits.Guilds, 
+        GatewayIntentBits.GuildMessages, 
+        GatewayIntentBits.MessageContent 
+    ] 
 });
 
-client.once('ready', async () => {
-    console.log(`Logged in as ${client.user.tag}!`);
+client.commands = new Collection();
+const mainCommandsPath = path.join(__dirname, 'commands');
 
-    const onlineEmbed = new EmbedBuilder()
-	.setColor('#84ed80')
-	.setTitle('I\'m online!')
-	.setDescription('Hosted via Oracle Cloud on Ubuntu 24/7. This is just for testing.')
-	.setImage('https://media1.tenor.com/m/ckcRbRDEmN8AAAAC/smooth-brain-kitty.gif')
-	.setFooter({ text: 'Bot created by Onyx' });
+loadCommandsFromDir(client, mainCommandsPath);
 
-    const channelId = '1535497299252224110';
-    const channel = await client.channels.fetch(channelId).catch(console.error);
+const eventsPath = path.join(__dirname, 'events');
+const eventFiles = fs.readdirSync(eventsPath).filter((file) => file.endsWith('.js'));
 
-    if (channel) {
-        channel.send({ embeds: [onlineEmbed] });
+for (const file of eventFiles) {
+    const filePath = path.join(eventsPath, file);
+    const event = require(filePath);
+    if (event.once) {
+        client.once(event.name, (...args) => event.execute(...args, config.maintenanceMode));
     } else {
-        console.error('Could not find the channel. Make sure the bot is invited to that server!');
+        client.on(event.name, (...args) => event.execute(...args, config.maintenanceMode));
     }
-});
+    logSuccess(`Loaded event ${event.name}`);
+}
 
 client.login(config.token);
