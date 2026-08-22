@@ -28,12 +28,12 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           static_site_generator: ''
-          path: './main-website'
+          path: 'main-website'
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: './main-website'
+          path: 'main-website'
 
       - name: Deploy to GitHub Pages
         id: deployment
