@@ -1,24 +1,25 @@
-async function checkTowerStatus() {
-    const response = await fetch(
-        'https://api.onyxs-towers.space/website/tower-wins'
-    )
+const events = new EventSource(
+    'https://api.onyxs-towers.space/website/tower-wins'
+)
 
-    const data = await response.json()
+events.addEventListener('towerWin', event => {
+    const data = JSON.parse(event.data)
 
-    if (data.happened) {
-        const p = document.createElement('p')
-        p.innerHTML = 'someone won a tower lol'
-        document.body.appendChild(p);
+    console.log('Someone won a tower!', data)
 
-        console.log('someone won a tower')
-        const audio = document.createElement('audio');
-        audio.src = '/assets/audio/tower-win.mp3';
-        audio.play();
+    const p = document.createElement('p')
+    p.textContent = 'someone join da game lol'
 
-        setTimeout(() => {
-            p.remove();
-        }, 3000);
-    }
+    document.body.appendChild(p)
+
+    const audio = new Audio('/assets/audio/tower-win.mp3')
+    audio.play()
+
+    setTimeout(() => {
+        p.remove()
+    }, 3000)
+})
+
+events.onerror = error => {
+    console.error('Tower-win event connection error:', error)
 }
-
-setInterval(checkTowerStatus, 2000)
