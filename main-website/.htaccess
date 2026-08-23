@@ -1,3 +1,8 @@
+RewriteEngine On
+
+# Roblox to Discord communication
+RewriteRule ^api/roblox/(.*)$ http://127.0.0.1:3000/api/roblox/$1 [P,L]
+
 RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
 RewriteRule ^ /%1 [NC,L,R=301]
 

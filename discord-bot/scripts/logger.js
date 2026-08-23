@@ -37,6 +37,10 @@ function logPromise(message) {
   baseLog('cyan', 'PROMISE', message)
 }
 
+function logApi(message) {
+  baseLog('magenta', 'API', message)
+}
+
 module.exports = {
   logInformation,
   logWarning,
@@ -44,5 +48,6 @@ module.exports = {
   logFailure,
   logSuccess,
   logSection,
-  logPromise
+  logPromise,
+  logApi
 }

@@ -19,6 +19,15 @@ const embedOnline = new EmbedBuilder()
         { name: 'last updated', value: '|NOW_TIMESTAMP|' }
 	);
 
+const embedNginx = new EmbedBuilder()
+    .setColor('red')
+    .setTitle('nginx offline')
+    .setDescription('web requests are broken - messages sent from roblox or api requests will not be received.')
+    .setFields({ text: 'bot created by onyx' })
+    .addFields(
+        { name: 'last updated', value: '|NOW_TIMESTAMP|' }
+	);
+
 const embedMaintenanceMode = new EmbedBuilder()
     .setColor('Grey')
     .setTitle('maintenance_mode')
@@ -39,6 +48,7 @@ module.exports = {
     embedMaintenanceInteraction,
     embedMaintenanceMode,
     embedOnline,
+    embedNginx,
     embedServerStatus,
     embedCouldn_tFindChannel,
 };

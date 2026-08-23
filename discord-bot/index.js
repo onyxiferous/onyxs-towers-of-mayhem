@@ -4,6 +4,10 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { loadCommandsFromDir } = require('./scripts/reload-commands');
 const { logSuccess, logSection } = require('./scripts/logger');
+const { startListeningIp } = require('./server/api');
+
+logSection('API started!')
+startListeningIp('127.0.0.1')
 
 logSection('JavaScript started!')
 
