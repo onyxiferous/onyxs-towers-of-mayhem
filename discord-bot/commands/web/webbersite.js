@@ -1,9 +1,10 @@
 const { SlashCommandBuilder } = require('discord.js');
+const { logFailure } = require('../../scripts/logger');
+const { getVoiceConnection } = require('@discordjs/voice');
 
 async function getWebsiteData() {
     try {
-        // Fetch the static json file hosted on GitHub Pages / custom domain
-        const response = await fetch('onyxs-towers.space/api/data.json', {
+        const response = await fetch('https://onyxs-towers.space/api/data.json', {
             headers: { 'Cache-Control': 'no-cache' } // Prevents receiving stale cached data
         });
 
@@ -25,6 +26,7 @@ module.exports = {
         .setDescription('check the webbersite.'),
 
     async execute(interaction) {
-        await interaction.reply({ content: `https://onyxs-towers.space ${getWebsiteData().test}` });
+        const data = await getWebsiteData()
+        await interaction.reply({ content: `https://onyxs-towers.space` });
     },
 };
