@@ -20,10 +20,10 @@ const embedOnline = new EmbedBuilder()
 	);
 
 const embedNginx = new EmbedBuilder()
-    .setColor('red')
+    .setColor('Red')
     .setTitle('nginx offline')
     .setDescription('web requests are broken - messages sent from roblox or api requests will not be received.')
-    .setFields({ text: 'bot created by onyx' })
+    .setFooter({ text: 'bot created by onyx' })
     .addFields(
         { name: 'last updated', value: '|NOW_TIMESTAMP|' }
 	);
