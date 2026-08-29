@@ -1,0 +1,33 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "resolveJsonModule": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "rootDir": "./",         
+        "outDir": "./dist",
+        "paths": {
+            "@modules/*": ["./src/modules/*"],
+            "@config/*": ["./config/*"],
+            "@private/*": ["./private/*"],
+            "@scripts/*": ["./src/scripts/*"],
+            "@server/*": ["./src/server/*"],
+            "@reserved-types/*": ["./src/types/*"],
+            "@helpers/*": ["./src/helpers/*"],
+            "@templates/*": ["./templates/*"]
+        },
+        "types": [
+            "node"
+        ]
+    },
+    "include": [
+        "src/**/*",
+        "config/**/*",
+        "private/**/*",
+        "templates/**/*"
+    ]
+}

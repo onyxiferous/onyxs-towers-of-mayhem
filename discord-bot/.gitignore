@@ -1,4 +1,8 @@
 node_modules
-config.json
 shared-data/number.json
-server/*
+private
+tokens.json
+dist
+
+[ollama]/*
+Modelfile

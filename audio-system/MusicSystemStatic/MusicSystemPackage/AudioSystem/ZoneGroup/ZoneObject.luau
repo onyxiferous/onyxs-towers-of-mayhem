@@ -93,7 +93,7 @@ ZoneObject.SwitchActiveZone = function(self: ZoneObject)
 	ZoneObject.ActiveZoneObject = self
 	
 	--# Unknown require: Unsupported path.
-	--# Slap a Double Colon™ on that 🅱️.
+	--# Slap a Double Colon™ on it.
 
 	self.UpdateGUI(self, {KeepPosition = shouldKeepPosition, Muted = false})
 	warn('[ZONE]: Switched active zone.', self)
@@ -102,27 +102,38 @@ end
 ZoneObject.Heartbeat = function(self: ZoneObject, deltaTime: number): ()
 	self.RunTime += deltaTime
 
-	local throttle = ZoneObject.HeartbeatThrottle
-	if self.RunTime < math.max(throttle, 1/100) then
+	local throttle = math.max(ZoneObject.HeartbeatThrottle, 1 / 100)
+
+	if self.RunTime < throttle then
 		return
 	end
 
 	self.RunTime %= throttle
-	
-	--# Throttles zone performance (because we REALLY shouldn't be checking every zeptosecond.)
 
-	local partsInside = workspace:GetPartsInPart(self.ZonePart, ZoneObject.OverlapParams)
-	local isZoneActive = ZoneObject.ActiveZoneObject == self
+	-- Throttle zone performance.
+	local partsInside = workspace:GetPartsInPart(
+		self.ZonePart,
+		ZoneObject.OverlapParams
+	)
+
 	local isInside = #partsInside > 0
+	local activeZone = ZoneObject.ActiveZoneObject
+	local isZoneActive = activeZone == self
 
-	if isInside and not isZoneActive then
-		self:SwitchActiveZone()
-	elseif not isInside and isZoneActive then
+	-- If this isn't the active zone, only allow it to take over
+	-- when there is currently no active zone.
+	if not isZoneActive then
+		if activeZone == nil and isInside then
+			self:SwitchActiveZone()
+		end
+
+		return
+	end
+
+	-- This zone is active. Keep it active while we're inside it.
+	if not isInside then
 		self:ClearActiveZone()
 	end
-	
-	--# Switches the active zone if there is an available zone to be occupied.
-	--# Otherwise, if there already is an active zone, the active zone is set to nothing.
 end
 
 ZoneObject.UpdateGUI = function(self: ZoneObject, options: AudioConfigurationConstructor.EventOptions)
