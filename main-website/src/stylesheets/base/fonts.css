@@ -1,0 +1,18 @@
+/* Google Fonts (via @import) */
+/* ========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+25&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+/* ========================== */
+/* Local/web fonts (via src) */
+
+@font-face {
+    font-family: 'Monaspace Krypton';
+    src: url('/assets/fonts/krypton.otf');
+    font-display: swap; /* This might not be necessary */
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ========================== */

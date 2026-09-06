@@ -12,7 +12,8 @@ Y8a     a8P      88      Y8a.    .a8P   88
 Even though this is labelled as a server-sided script, sensitive details such as tokens should
 NEVER be included in these files as these are included in public branches within .gitignore.
 BEFORE COMMITTING, please make sure tokens or secrets are secured and out of reach.
-Use the dedicated @private path for secrets. */
+Use the dedicated @private path for secrets.
+*/
 
 import express, { Request, Response, json } from 'express';
 import cors from 'cors';

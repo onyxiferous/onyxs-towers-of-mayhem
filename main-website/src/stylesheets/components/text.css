@@ -1,0 +1,33 @@
+/* ========================== */
+
+/* Don't set font color or family here! Use /themes/ instead. */
+
+/* Font size correction */
+
+h1, h2, h3, h4, h5, h6,
+big, p, small,
+button {
+    word-wrap: break-word;
+}
+
+h1    {  font-size: clamp(var(--font-size_xl), var(--font-scaling_peak) + var(--font-scaling_size-reference), var(--font-size_xxl))  }
+h2    {  font-size: clamp(var(--font-size_l), var(--font-scaling_peak) + var(--font-scaling_size-reference), var(--font-size_xl))  }
+h3    {  font-size: clamp(var(--font-size_m), var(--font-scaling_peak) + var(--font-scaling_size-reference), var(--font-size_l))  }
+h4    {  font-size: clamp(var(--font-size_s), var(--font-scaling_peak) + var(--font-scaling_size-reference), var(--font-size_m))  }
+h5    {  font-size: clamp(var(--font-size_xs), var(--font-scaling_peak) + var(--font-scaling_size-reference), var(--font-size_s))  }
+h6    {  font-size: clamp(var(--font-size_xs), var(--font-scaling_peak)  + var(--font-scaling_size-reference), var(--font-size_xs))  }
+
+big {  font-size: clamp(var(--font-size_l), var(--font-scaling_peak) + var(--font-scaling_size-reference), var(--font-size_xl))  }
+p {  font-size: clamp(var(--font-size_baseline), var(--font-scaling_peak) + var(--font-scaling_size-reference), var(--font-size_content))  }
+small {  font-size: clamp(var(--font-size_xs), var(--font-scaling_peak) + var(--font-scaling_size-reference), var(--font-size_s))  }
+
+button, .details-panel * {  font-size: clamp(var(--font-size_baseline), var(--font-scaling_peak) + var(--font-scaling_size-reference), var(--font-size_component))  }
+
+/* Hyperlink decorations */
+
+:any-link:not([preserve-style]) {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ========================== */

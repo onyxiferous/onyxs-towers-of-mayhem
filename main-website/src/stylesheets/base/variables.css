@@ -1,0 +1,88 @@
+/* Some .css files depend on variables.css and must be linked to the
+HTML for full stability. */
+/* rem (Root Em) scaling is preferred. */
+
+/* ========================== */
+
+/* Typography/font size constants (@components/text.css) */
+
+:root {
+    --font-size_baseline: 1rem;
+    --font-size_component: 1.075rem;
+    --font-size_content: 1.2rem;
+    --font-size_xxs: 0.8rem;
+    --font-size_xs: 1.2rem;
+    --font-size_s: 1.4rem;
+    --font-size_m: 1.6rem;
+    --font-size_l: 2rem;
+    --font-size_xl: 3rem;
+    --font-size_xxl: 4rem;
+
+    --font-scaling_peak: 5vw;
+    --font-scaling_size-reference: 0.5rem;
+}
+
+/* Spacing constants */ 
+
+:root {
+    --spacing_spacious: 1em;
+    --spacing_cozy: 0.75em;
+    --spacing_balanced: 0.5em;
+    --spacing_compact: 0.25em;
+    --spacing_tight: 0.2em;
+    --spacing_cramped: 0.1em;
+    --spacing_precise: 1px;
+}
+
+/* Margin */
+
+:root {
+    --margin_huge: 16em;
+    --margin_large: 8em;
+    --margin_medium: 4em;
+    --margin_balanced: 2em;
+    --margin_small: 1em;
+    --margin_tiny: 0.5em;
+}
+
+/* Max-width constants */
+
+:root {
+    --max-width_narrow: 200px;
+    --max-width_balanced: 500px;
+    --max-width_wide: 700px;
+    --max-width_verywide: 900px;
+    --max-width_extrawide: 1200px;
+}
+
+
+.agony {
+    animation-name: agony;
+    animation-duration: 50ms;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+}
+
+@keyframes agony {
+    0% {
+        transform: skew(35deg, 15deg);
+    }
+
+    25% {
+        transform: skew(45deg, -35deg);
+    }
+
+    50% {
+        transform: skew(-25deg, 5deg);
+    }
+
+    75% {
+        transform: skew(25deg, 10deg);
+    }
+
+    100% {
+        transform: skew(20deg, -25deg);
+    }
+}
+
+/* ========================== */

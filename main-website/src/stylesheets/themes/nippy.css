@@ -1,0 +1,85 @@
+/* Nippy! The default theme for the website. */
+/* Why'd I call it Nippy? Because it has hints of blue.
+And because I couldn't think of another word for 'cold'. */
+
+/* ========================== */
+
+/* Theme variables, should be formatted like <theme-name_<type->descriptor> to keep things tidy */
+
+:root {
+    --default-theme_bg-primary: #15151b;
+    --default-theme_bg-secondary: #1e1e29;
+    --default-theme_bg-tertiary: #292c45;
+
+    --default-theme_fg-primary: #f1f1fc;
+    --default-theme_fg-secondary: #d2daff;
+    --default-theme_fg-tertiary: #a7aef3;
+
+    --default-theme_border-primary: #40485b;
+
+    --default-theme_scroller-track: #212024;
+    --default-theme_scroller-thumb: #7a5e56;
+    --default-theme_scroller-thumb-over: #ff9151;
+
+    --default-theme_text-font: 'Source Sans 3'; 
+    --default-theme_header-font: 'Jersey 25'; 
+}
+
+/* ========================== */
+
+/* Background color */
+
+body {
+    background-color: var(--default-theme_bg-primary);
+}
+
+/* Moz/old scrollbar fallback */ 
+
+body, html:not([use-default]) {
+    scrollbar-color: var(--default-theme_scroller-thumb) var(--default-theme_scroller-track);
+}
+
+/* Foreground color for most elements */
+
+p, h1, h2, h3, h4, h5, h6, small,
+button {
+    color: var(--default-theme_fg-primary);
+}
+
+/* Style for buttons */
+
+button {
+    background-color: var(--default-theme_bg-secondary);
+    border: 1px solid var(--default-theme_border-primary);
+}
+
+/* ========================== */
+
+/* Fontsetting */
+/* /base/fonts.css MUST be linked to the HTML to take effect. */
+
+p, caption, small {
+    font-family: var(--default-theme_text-font);
+}
+
+h1, h2, h3, h4, h5, h6, big {
+    font-family: var(--default-theme_header-font);
+}
+
+/* ========================== */
+
+/* Custom scrollbar colors */
+
+body:not([use-default]) ::-webkit-scrollbar-track {
+  background: var(--default-theme_scroller-track);
+}
+
+body:not([use-default]) ::-webkit-scrollbar-thumb {
+  background-color: var(--default-theme_scroller-thumb);
+}
+
+body:not([use-default]) ::-webkit-scrollbar-thumb:hover {
+  background-color: var(--default-theme_scroller-thumb-over);
+}
+
+/* ========================== */
