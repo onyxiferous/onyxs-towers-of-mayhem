@@ -21,7 +21,7 @@ And because I couldn't think of another word for 'cold'. */
     --default-theme_scroller-thumb: #7a5e56;
     --default-theme_scroller-thumb-over: #ff9151;
 
-    --default-theme_text-font: 'Source Sans 3'; 
+    --default-theme_text-font: 'Geist Pixel'; 
     --default-theme_header-font: 'Jersey 25'; 
 }
 
@@ -41,9 +41,13 @@ body, html:not([use-default]) {
 
 /* Foreground color for most elements */
 
-p, h1, h2, h3, h4, h5, h6, small,
-button {
+p, h2, h3, h4, h5, h6, small,
+button, span.mixed-text {
     color: var(--default-theme_fg-primary);
+}
+
+h1 { 
+    color: var(--default-theme_fg-tertiary)
 }
 
 /* Style for buttons */
@@ -58,7 +62,7 @@ button {
 /* Fontsetting */
 /* /base/fonts.css MUST be linked to the HTML to take effect. */
 
-p, caption, small {
+p, caption, small, span.mixed-text, button {
     font-family: var(--default-theme_text-font);
 }
 

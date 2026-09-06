@@ -1,0 +1,22 @@
+/* ========================== */
+
+/* The little details card seen in the index page */
+
+#bot-metadata {
+    width: clamp(150px, 25vw, 250px);
+    flex: 0 1 auto;
+}
+
+#bot-metadata img {
+    width: 100%;
+}
+
+/* Fix to conserve/fill space for small screens */
+
+@media (max-width: 450px) {
+    #bot-metadata {
+        width: fit-content;
+    }
+}
+
+/* ========================== */

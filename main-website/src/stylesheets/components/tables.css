@@ -1,0 +1,57 @@
+.part-limit-table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 700px;
+    font-size: 16px;
+        background-color: rgb(34, 34, 34);
+}
+
+.part-limit-table th, 
+.part-limit-table td {
+    border: 1px solid black;
+    padding: 12px 16px;
+    vertical-align: middle;
+        font-size: 15pt;
+}
+
+/* Header Background Colors */
+.header-normal { background-color: #d1d5db; color: contrast-color(#d1d5db); font-family: "Jersey 25";         font-size: 18pt; }
+.header-ebuilder { background-color: #a5b4fc; color: contrast-color(#a5b4fc); font-family: "Jersey 25";         font-size: 18pt; }
+.header-ldm, .header-uldm { 
+    background-color: #f87171; 
+        color: contrast-color(#f87171);
+    border-style: dashed;
+    font-family: "Jersey 25";        
+    font-size: 15pt;
+}
+
+/* Row Header Colors (Left column) */
+.row-bastions { background-color: #fde047; color: contrast-color(#fde047); font-family: "Jersey 25"; }
+.row-crypts { background-color: #fed7aa;  color: contrast-color(#fed7aa); font-family: "Jersey 25"; }
+.row-citadels { background-color: #db2777; color: #fff;  color: contrast-color(#db2777); font-family: "Jersey 25"; }
+.row-towers { background-color: #818cf8; color: #fff; color: contrast-color(#818cf8); font-family: "Jersey 25"; }
+.row-steeples { background-color: #60a5fa; color: #fff; color: contrast-color(#60a5fa); font-family: "Jersey 25"; }
+
+/* Special Cells */
+.na-cell {
+    background-color: #c74444;
+    color: #fff;
+    text-align: left;
+    font-weight: bold;
+            font-size: 15pt;
+}
+
+.num {
+    text-align: right;
+                font-size: 15pt;
+}
+
+/* Dotted vertical borders for LDM and ULDM columns */
+.part-limit-table td:nth-child(4),
+.part-limit-table th:nth-child(4),
+.part-limit-table td:nth-child(5),
+.part-limit-table th:nth-child(5) {
+    border-left-style: dotted;
+    border-right-style: dotted;
+            font-size: 15pt;
+}
