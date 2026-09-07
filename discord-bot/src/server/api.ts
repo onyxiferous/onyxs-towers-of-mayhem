@@ -18,9 +18,18 @@ Use the dedicated @private path for secrets.
 import express, { Request, Response, json } from 'express';
 import cors from 'cors';
 
+import crypto from 'node:crypto';
 import { logApi, logSection } from '@modules/logger.js';
 import tokens from '@private/tokens.json' with { type: 'json' };
-const { robloxApiKey } = tokens
+const { robloxApiKey, clientId, token } = tokens
+
+const DISCORD_CALLBACK =
+    'https://api.onyxs-towers.space/auth/discord/callback';
+
+const sessions = new Map<string, {
+    discordId: string;
+    username: string;
+}>();
 
 let isNginxListening = false;
 const app = express();
@@ -32,6 +41,129 @@ app.use(cors({
 app.use(json());
 
 const websiteClients = new Set<Response>();
+
+app.get('/auth/discord', (req, res) => {
+    const state = crypto.randomBytes(32).toString('hex');
+
+    res.cookie('discord_oauth_state', state, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'lax',
+        maxAge: 10 * 60 * 1000,
+    });
+
+    const params = new URLSearchParams({
+        client_id: clientId,
+        response_type: 'code',
+        redirect_uri: DISCORD_CALLBACK,
+        scope: 'identify',
+        state,
+    });
+
+    res.redirect(
+        `https://discord.com/oauth2/authorize?${params.toString()}`
+    );
+});
+
+app.get('/auth/discord/callback', async (req: Request, res: Response) => {
+    const { code, state } = req.query;
+
+    if (
+        typeof code !== 'string' ||
+        typeof state !== 'string'
+    ) {
+        return res.status(400).send('Invalid Discord callback.');
+    }
+
+    if (state !== req.cookies.discord_oauth_state) {
+        return res.status(400).send('Invalid OAuth state.');
+    }
+
+    res.clearCookie('discord_oauth_state');
+
+    try {
+        const tokenBody = new URLSearchParams({
+            client_id: clientId,
+            client_secret: token,
+            grant_type: 'authorization_code',
+            code,
+            redirect_uri: DISCORD_CALLBACK,
+        });
+
+        const tokenResponse = await fetch(
+            'https://discord.com/api/v10/oauth2/token',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type':
+                        'application/x-www-form-urlencoded',
+                },
+                body: tokenBody,
+            }
+        );
+
+        if (!tokenResponse.ok) {
+            const error = await tokenResponse.text();
+
+            logApi(`Discord token exchange failed: ${error}`);
+
+            return res.status(401).send(
+                'Could not authenticate with Discord.'
+            );
+        }
+
+        const tokenData = await tokenResponse.json();
+
+        const userResponse = await fetch(
+            'https://discord.com/api/v10/users/@me',
+            {
+                headers: {
+                    Authorization:
+                        `Bearer ${tokenData.access_token}`,
+                },
+            }
+        );
+
+        if (!userResponse.ok) {
+            return res.status(401).send(
+                'Could not retrieve Discord account.'
+            );
+        }
+
+        const user = await userResponse.json();
+
+        const sessionId = crypto
+            .randomBytes(32)
+            .toString('hex');
+
+        sessions.set(sessionId, {
+            discordId: user.id,
+            username: user.username,
+        });
+
+        res.cookie('session_id', sessionId, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'lax',
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+        });
+
+        logApi(
+            `Discord login: ${user.username} (${user.id})`
+        );
+
+        return res.redirect(
+            'https://onyxs-towers.space/bot?discord_login=success'
+        );
+
+    } catch (error) {
+        console.error(error);
+
+        return res.status(500).send(
+            'Discord authentication failed.'
+        );
+    }
+});
 
 app.get('/website/tower-wins', (req: Request, res: Response) => {
     res.setHeader('Content-Type', 'text/event-stream');
