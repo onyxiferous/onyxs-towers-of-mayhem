@@ -1,5 +1,8 @@
 const params = new URLSearchParams(window.location.search);
 const loginButton = document.querySelector('#discord-oauth-login')
+const lowerPaymentSection = document.querySelector('#lower-payment-section')
+const upperPaymentSection = document.querySelector('#upper-payment-section')
+
 if (params.get('discord_login') === 'success') {
     // Remove the query parameter from the address bar
     window.history.replaceState(
@@ -34,6 +37,8 @@ const data = JSON.parse(text);
         }
 
         loginButton.disabled = true;
+        upperPaymentSection.disabled = true;
+        lowerPaymentSection.disabled = false;
         loginButton.innerHTML = `Hi ${data.username}`
 
     } catch (error) {

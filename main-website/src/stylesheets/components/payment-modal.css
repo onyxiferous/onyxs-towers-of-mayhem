@@ -30,6 +30,6 @@
     pointer-events: none;
 }
 
-.payment-section[disabled] small {
+.payment-section[disabled] * {
     color: #888;
 }
