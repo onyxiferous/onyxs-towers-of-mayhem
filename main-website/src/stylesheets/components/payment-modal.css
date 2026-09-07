@@ -31,5 +31,7 @@
 }
 
 .payment-section[disabled] * {
+    pointer-events: none;
+    cursor: not-allowed;
     color: #888;
 }
