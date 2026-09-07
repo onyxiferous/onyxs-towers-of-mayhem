@@ -168,6 +168,30 @@ app.get('/auth/discord/callback', async (req: Request, res: Response) => {
     }
 });
 
+app.get('/auth/me', (req: Request, res: Response) => {
+    const sessionId = req.cookies.session_id;
+
+    if (!sessionId) {
+        return res.json({
+            loggedIn: false,
+        });
+    }
+
+    const session = sessions.get(sessionId);
+
+    if (!session) {
+        return res.json({
+            loggedIn: false,
+        });
+    }
+
+    return res.json({
+        loggedIn: true,
+        discordId: session.discordId,
+        username: session.username,
+    });
+});
+
 app.get('/website/tower-wins', (req: Request, res: Response) => {
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache, no-transform');

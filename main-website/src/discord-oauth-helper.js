@@ -1,5 +1,5 @@
 const params = new URLSearchParams(window.location.search);
-
+const loginButton = document.querySelector('#discord-oauth-login')
 if (params.get('discord_login') === 'success') {
     // Remove the query parameter from the address bar
     window.history.replaceState(
@@ -33,10 +33,8 @@ const data = JSON.parse(text);
             return;
         }
 
-        console.log('Logged in as:', data.username);
-        console.log('Discord ID:', data.discordId);
-
-        alert('logged in')
+        loginButton.disabled = true;
+        loginButton.innerHTML = `Hi ${data.username}`
 
     } catch (error) {
         console.error('Failed to check Discord login:', error);

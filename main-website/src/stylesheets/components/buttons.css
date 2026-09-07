@@ -10,4 +10,10 @@ button {
     padding: calc(var(--button-padding_default) / 2) var(--button-padding_default);
 }
 
+button:disabled {
+    mix-blend-mode: color-dodge;
+    pointer-events: none;
+    color: lightgray;
+}
+
 /* ========================== */
