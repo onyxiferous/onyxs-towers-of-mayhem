@@ -11,9 +11,8 @@ button {
 }
 
 button:disabled {
-    mix-blend-mode: color-dodge;
-    pointer-events: none;
-    color: lightgray;
+    color: #504e4e;
+    border: 1px dashed #504e4e;
 }
 
 /* ========================== */
