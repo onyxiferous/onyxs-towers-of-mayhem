@@ -5,6 +5,8 @@
 @import "./components/image-grid.css";
 @import "./components/text.css";
 @import "./components/buttons.css";
+@import "./components/inputs.css";
+@import "./components/payment-modal.css";
 
 @import "./layout/scroller.css";
 @import "./layout/content.css";

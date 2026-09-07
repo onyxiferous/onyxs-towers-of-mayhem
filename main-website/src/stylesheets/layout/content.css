@@ -11,6 +11,24 @@ body {
 
 /* ========================== */
 
+/* Accessibility */
+ 
+*:focus {
+    animation: focus-flicker 400ms cubic-bezier(0.250, 0.250, 0.015, 1.065) infinite alternate;
+}
+
+@keyframes focus-flicker {
+    from {
+        outline: 1px solid white;
+        outline-offset: -2px;
+    }
+
+    to {
+        outline: 1px dotted var(--default-theme_bg-tertiary);
+        outline-offset: 2px;
+    }
+}
+
 /* Block content */
 
 .block-content {
@@ -27,7 +45,8 @@ body {
 
 .block-content-section,
 .block-container,
-.block-inner-section {
+.block-inner-section,
+.block-sub-section {
     margin: 0 auto;
     display: flex;
     align-items: flex-start;
@@ -36,17 +55,27 @@ body {
     gap: var(--margin_balanced);
 }
 
-.block-inner-section {
+.block-sub-section {
+    margin: 0;
+    gap: var(--spacing_tight);
+}
+
+.block-inner-section:not(.modal-item) {
     width: 100%;
 }
 
 .block-content-section.inline,
 .block-container.inline,
 .block-inner-section.inline,
-.contextual.inline {
+.contextual.inline,
+.block-sub-section.inline {
     display: inline-flex;
-    flex-direction: initial;
+    flex-direction: row;
     align-items: center;
+}
+
+.block-inner-section.compact {
+    gap: var(--spacing_balanced);
 }
 
 .contextual {
@@ -100,6 +129,60 @@ background: linear-gradient(0deg,rgb(15, 15, 15) 0%, rgba(26, 26, 26, 0) 100%);
     display: flex;
     flex-direction: column;
     gap: 8px;
+}
+
+/* Cards */
+
+.payment-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing_balanced);
+    padding: var(--spacing_cozy);
+    background: rgb(19, 19, 20);
+    border: 1px solid rgb(56, 68, 79);
+    border-radius: 4px;
+    min-height: 300px;
+    overflow: hidden;
+}
+
+.payment-card .block-inner-section.culling {
+    width: fit-content;
+}
+
+.payment-card .vendor-badge {
+    position: absolute;
+    bottom: -4px;
+    left: -25rem;
+    opacity: 0.5;
+    z-index: 5;
+    mix-blend-mode: color-dodge;
+
+    animation: vendor-badge-animation 1500ms cubic-bezier(0.310, 0.070, 0.515, 1.085) 0ms 1 forwards;
+}
+
+@keyframes vendor-badge-animation {
+    0% {
+        left: -25rem;
+        opacity: 0.5;
+    }
+
+    50% {
+        left: -4px;
+        opacity: 0.5;
+    }
+
+    80% {
+        left: -4px;
+        opacity: 0.5;
+    }
+
+    100% {
+        left: -75px;
+        opacity: 0.25;
+    }
 }
 
 /* ========================== */

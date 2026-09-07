@@ -1,0 +1,35 @@
+.card-code {
+    width: 3rem;
+}
+
+.card-promo {
+    width: 5em;
+}
+
+.card-expiration {
+    width: 3rem;
+}
+
+.card-number, .card-name {
+    width: 8rem;
+}
+
+.payment-section {
+    flex-direction: row !important;  
+    justify-content: space-between;
+}
+
+.payment-section .modal-item {
+    gap: var(--spacing_balanced);
+    display: inline-flex;
+    align-items: center;
+}
+
+.payment-section[disabled] {
+    mix-blend-mode: color-dodge !important;
+    pointer-events: none;
+}
+
+.payment-section[disabled] small {
+    color: #888;
+}

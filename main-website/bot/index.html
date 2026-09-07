@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="/src/stylesheets/main.css" />
     <link rel="stylesheet" href="/src/stylesheets/pages/bot-index-page.css" />
 
+    <script defer src="/src/payment-handler.js"></script>
+
     <title>Bot</title>
 </head>
 
@@ -71,18 +73,104 @@
                         <p>I don't know. I'm still working on this section.</p>
                     </div>
 
+                    <p style="color: red;">PLEASE DO NOT USE THE PAYMENT SECTION. IT WILL NOT WORK!</p>
+
                     <div class="block-inner-section">
                         <h2>Can't get enough?</h2>
-<span class="mixed-text">
-    <span>Cop a membership. It's only $4.99 for one month - use code</span>
-    <code>N30</code>
-    <span>to try it for free for 3 days. Neo gives you access to faster command cooldowns, increased message and usage limits, as well as some exclusive perks.</span>
-</span>
-                    
+                        <span class="mixed-text">
+                            <span>Cop a membership. It's only $4.99 for one month - use code</span>
+                            <code>N30</code>
+                            <span>to try it for free for 3 days. Neo gives you access to faster command cooldowns,
+                                increased message and usage limits, as well as some exclusive perks. Right now, we only
+                                have a singular tier and don't plan to introduce new ones.</span>
+
+
+
+                            <div class="block-content payment-card">
+                                <div class="block-inner-section culling">
+                                    <div class="block-inner-section center">
+                                        <img class="vendor-badge" src="/assets/images/stripe-badge.svg" />
+                                        <div class="list-consolidated">
+                                            <h3>Neo Base</h3>
+                                            <span class="block-inner-section inline">
+                                                                                            <p>$4.99 flat</p>
+                                            <button><a href="/auth/discord">Sign in with Discord</a></button>
+                                            </span>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="block-inner-section payment-section" disabled>
+
+
+                                        <div class="input-box-holder compact inline modal-item">
+                                            <div class="block-sub-section">
+                                                <small>Card number</small>
+                                            </div>
+                                            <input class="card-number input-box" type="text" inputmode="numeric"
+                                                autocomplete="cc-number" aria-label="Number"
+                                                placeholder="0000 0000 0000 0000" pattern="\d*" maxlength="19">
+                                        </div>
+
+                                        <div class="input-box-holder compact modal-item">
+                                            <div class="block-sub-section">
+                                                <small>Card name</small>
+                                                <small sub>Legal name if possible.</small>
+                                            </div>
+                                            <input class="card-name input-box" type="text" id="card-name"
+                                                name="cardholder-name" autocomplete="cc-name"
+                                                placeholder="John/Jane Doe" maxlength="35" required>
+
+
+                                        </div>
+
+
+                                        <!-- Expiration Date Field -->
+                                        <div class="input-box-holder compact modal-item">
+                                            <div class="block-sub-section">
+                                                <small>Expiration date</small>
+                                                <small sub>Can't be in the past.</small>
+                                            </div>
+                                            <input class="card-expiration input-box" id="card-exp" name="card-exp"
+                                                placeholder="MM/YY" maxlength="5"
+                                                pattern="^(0[1-9]|1[0-2])\/([0-9]{2})$" inputmode="numeric"
+                                                autocomplete="cc-exp" required>
+                                        </div>
+
+                                        <!-- Security Code Field (Fixed nesting) -->
+                                        <div class="input-box-holder compact modal-item">
+                                            <div class="block-sub-section">
+                                                <small>Security code</small>
+                                                <small sub>Usually 3 or 4 numbers on the back.</small>
+                                            </div>
+                                            <input class="card-code input-box" type="text" id="cvv" name="cvv"
+                                                inputmode="numeric" pattern="[0-9]{3,4}" maxlength="4" minlength="3"
+                                                autocomplete="cc-csc" placeholder="000[0]" required>
+                                        </div>
+
+                                        <div class="input-box-holder compact modal-item">
+                                            <div class="block-sub-section">
+                                                <small>Promo code</small>
+                                                <small sub>Try it out for a limited time.</small>
+                                            </div>
+                                            <input class="card-promo input-box" type="text" id="promo" name="promo"
+                                                inputmode="numeric" maxlength="20" minlength="1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </div>
+
+
+
+                </span>
+
             </div>
         </div>
+    </div>
+    </div>
 
 </body>
 

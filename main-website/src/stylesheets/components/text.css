@@ -21,7 +21,12 @@ big {  font-size: clamp(var(--font-size_l), var(--font-scaling_peak) + var(--fon
 p, span.mixed-text {  font-size: clamp(var(--font-size_baseline), var(--font-scaling_peak) + var(--font-scaling_size-reference), var(--font-size_content))  }
 small {  font-size: clamp(var(--font-size_xs), var(--font-scaling_peak) + var(--font-scaling_size-reference), var(--font-size_s))  }
 
-button, .details-panel * {  font-size: clamp(var(--font-size_baseline), var(--font-scaling_peak) + var(--font-scaling_size-reference), var(--font-size_component))  }
+button, .details-panel *, caption, small {  font-size: clamp(var(--font-size_baseline), var(--font-scaling_peak) + var(--font-scaling_size-reference), var(--font-size_component))  }
+
+small[sub] {
+    color: grey;
+    font-size: small;
+}
 
 /* ========================== */
 
@@ -48,7 +53,7 @@ span.mixed-text code {
 
 /* Code blocks */
 
-code {
+code, input {
     font-family: 'Monaspace Krypton', monospace;
     background: rgb(48, 36, 33);
     border-radius: 4px;
