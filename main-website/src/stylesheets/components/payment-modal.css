@@ -28,10 +28,9 @@
 .payment-section[disabled] {
     mix-blend-mode: color-dodge !important;
     pointer-events: none;
+    cursor: not-allowed;
 }
 
 .payment-section[disabled] * {
-    pointer-events: none;
-    cursor: not-allowed;
     color: #888;
 }
