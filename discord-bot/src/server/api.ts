@@ -18,10 +18,11 @@ Use the dedicated @private path for secrets.
 import express, { Request, Response, json } from 'express';
 import cors from 'cors';
 
+import cookieParser from 'cookie-parser';
 import crypto from 'node:crypto';
 import { logApi, logSection } from '@modules/logger.js';
 import tokens from '@private/tokens.json' with { type: 'json' };
-const { robloxApiKey, clientId, token } = tokens
+const { robloxApiKey, clientId, clientSecret } = tokens
 
 const DISCORD_CALLBACK =
     'https://api.onyxs-towers.space/auth/discord/callback';
@@ -35,11 +36,12 @@ let isNginxListening = false;
 const app = express();
 
 app.use(cors({
-    origin: 'https://onyxs-towers.space'
-}))
+    origin: 'https://onyxs-towers.space',
+    credentials: true,
+}));
 
+app.use(cookieParser());
 app.use(json());
-
 const websiteClients = new Set<Response>();
 
 app.get('/auth/discord', (req, res) => {
@@ -84,7 +86,7 @@ app.get('/auth/discord/callback', async (req: Request, res: Response) => {
     try {
         const tokenBody = new URLSearchParams({
             client_id: clientId,
-            client_secret: token,
+            client_secret: clientSecret,
             grant_type: 'authorization_code',
             code,
             redirect_uri: DISCORD_CALLBACK,
@@ -129,6 +131,7 @@ app.get('/auth/discord/callback', async (req: Request, res: Response) => {
                 'Could not retrieve Discord account.'
             );
         }
+        
 
         const user = await userResponse.json();
 

@@ -21,7 +21,12 @@ async function loadDiscordUser() {
             }
         );
 
-        const data = await response.json();
+const text = await response.text();
+
+console.log('API status:', response.status);
+console.log('API response:', text);
+
+const data = JSON.parse(text);
 
         if (!data.loggedIn) {
             console.log('Not logged in');
