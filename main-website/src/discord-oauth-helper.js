@@ -37,8 +37,8 @@ const data = JSON.parse(text);
         }
 
         loginButton.disabled = true;
-        upperPaymentSection.disabled = true;
-        lowerPaymentSection.disabled = false;
+        upperPaymentSection.setAttribute('disabled', false)
+        lowerPaymentSection.removeAttribute('disabled');
         loginButton.innerHTML = `Hi ${data.username}`
 
     } catch (error) {
