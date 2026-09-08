@@ -26,12 +26,17 @@
     align-items: center;
 }
 
-.payment-section[disabled] {
+.payment-section[disabled],
+.list-consolidated[disabled]  {
     mix-blend-mode: color-dodge !important;
-    pointer-events: none;
-    cursor: not-allowed;
+    pointer-events: none !important;
+    cursor: not-allowed !important;
 }
 
 .payment-section[disabled] * {
+    color: #888;
+}
+
+.list-consolidated[disabled] * {
     color: #888;
 }
