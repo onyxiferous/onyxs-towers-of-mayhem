@@ -46,7 +46,7 @@ const data = JSON.parse(text);
                 upperPaymentSection.classList.add('collapsed')
 profilePicture.innerHTML = avatarUrl
 buttonText.innerHTML = `for ${data.username}`
-buttonText.setAttribute('hidden', false)
+profilePicture.setAttribute('hidden', false)
 
     } catch (error) {
         console.error('Failed to check Discord login:', error);
