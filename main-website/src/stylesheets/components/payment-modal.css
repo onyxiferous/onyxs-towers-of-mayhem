@@ -27,10 +27,14 @@
 }
 
 .payment-section[disabled],
-.list-consolidated[disabled] ,
+.list-consolidated[disabled] {
+    cursor: not-allowed !important;
+}
+
 .payment-section[disabled] *,
 .list-consolidated[disabled] * {
     mix-blend-mode: color-dodge !important;
     color: #888;
-    cursor: not-allowed !important;
+    pointer-events: none;
+    user-select: none;
 }
