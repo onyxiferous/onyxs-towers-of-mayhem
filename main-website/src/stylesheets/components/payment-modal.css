@@ -29,7 +29,6 @@
 .payment-section[disabled],
 .list-consolidated[disabled]  {
     mix-blend-mode: color-dodge !important;
-    pointer-events: none !important;
     cursor: not-allowed !important;
 }
 
