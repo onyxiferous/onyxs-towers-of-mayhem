@@ -1,7 +1,9 @@
 const params = new URLSearchParams(window.location.search);
 const loginButton = document.querySelector('#discord-oauth-login')
+const buttonText = loginButton.querySelector('.link-button')
 const lowerPaymentSection = document.querySelector('#lower-payment-section')
 const upperPaymentSection = document.querySelector('#upper-payment-section')
+        const profilePicture = upperPaymentSection.querySelector('.emblem.profile-picture')
 
 if (params.get('discord_login') === 'success') {
     window.history.replaceState(
@@ -33,8 +35,6 @@ const data = JSON.parse(text);
             console.log('Not logged in');
             return;
         }
-        const profilePicture = upperPaymentSection.querySelector('.emblem.profile-picture')
-        const buttonText = loginButton.querySelector('.button-text')
 
         const avatarUrl = data.avatar
     ? `https://cdn.discordapp.com/avatars/${data.discordId}/${data.avatar}.png`
