@@ -30,6 +30,7 @@ const DISCORD_CALLBACK =
 const sessions = new Map<string, {
     discordId: string;
     username: string;
+    avatar: string | null;
 }>();
 
 let isNginxListening = false;
@@ -142,6 +143,7 @@ app.get('/auth/discord/callback', async (req: Request, res: Response) => {
         sessions.set(sessionId, {
             discordId: user.id,
             username: user.username,
+            avatar: user.avatar,
         });
 
         res.cookie('session_id', sessionId, {
@@ -189,6 +191,7 @@ app.get('/auth/me', (req: Request, res: Response) => {
         loggedIn: true,
         discordId: session.discordId,
         username: session.username,
+        avatar: session.avatar
     });
 });
 
