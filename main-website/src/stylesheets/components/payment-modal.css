@@ -1,29 +1,16 @@
-.card-code {
-    width: 2rem;
-}
-
-.card-promo, card-name {
-    width: 5em;
-}
-
-.card-expiration {
-    width: 3rem;
-}
+.card-code { width: 2rem }
+.card-promo, card-name { width: 5em }
+.card-expiration { width: 3rem }
 
 .card-name {
-    width: 8rem;
+
+width: 8rem;
+
 }
 
-.payment-section {
-    flex-direction: row !important;  
-    justify-content: space-between;
-    transition: color 400ms;
-}
-
-.payment-section .modal-item {
-    gap: var(--spacing_balanced);
-    display: inline-flex;
-    align-items: center;
+.payment-section .block-inner-section {
+    padding: 2px;
+    gap: var(--margin_small);
 }
 
 .payment-section[disabled],
@@ -38,3 +25,29 @@
     pointer-events: none;
     user-select: none;
 }
+
+#upper-payment-section {
+    max-height: 200px;
+    opacity: 1;
+    transform: scale(1);
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.list-consolidated {
+    display: flex;
+    width: 100%;
+}
+
+.list-consolidated button {
+    line-break: strict;
+    min-width: 200px;
+}
+
+#lower-payment-section .modal-item .block-sub-section {
+    gap: var(--spacing_tight);
+    display: flex;
+    flex-direction: column;
+}
+
+#lower-payment-section .block-sub-section { margin-bottom: 8px }

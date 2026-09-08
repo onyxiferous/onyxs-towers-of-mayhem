@@ -89,25 +89,25 @@
 
                             <div class="block-content payment-card">
                                 <div class="block-inner-section payment-section">
-                                    <div class="block-inner-section center">
-                                        <img class="vendor-badge" src="/assets/images/stripe-badge.svg" />
-                                        <div id="upper-payment-section" class="list-consolidated">
-                                            <h3>Neo Base</h3>
+                                    <div id="upper-payment-section" class="block-inner-section center">
+                                        <div class="list-consolidated">
                                             <span class="block-inner-section inline">
+                                                                                            <h3 class="header">Neo Base</h3>
                                                                                             <p>$4.99 flat</p>
-                                            <button id="discord-oauth-login"><a href="https://api.onyxs-towers.space/auth/discord">Sign in with Discord</a></button>
                                             </span>
+                                                                                        <button id="discord-oauth-login"><a href="https://api.onyxs-towers.space/auth/discord">Sign in with Discord</a></button>
 
                                         </div>
                                     </div>
 
 
-                                    <div id="lower-payment-section" class="block-inner-section payment-section" disabled>
+                                    <div id="lower-payment-section" class="block-inner-section row payment-section" disabled>
 
 
-                                        <div class="input-box-holder compact inline modal-item">
+                                        <div class="input-box-holder compact modal-item">
                                             <div class="block-sub-section">
                                                 <small>Card number</small>
+                                                                                                <small sub>At least 16 digits.</small>
                                             </div>
                                             <input class="card-number input-box" type="text" inputmode="numeric"
                                                 autocomplete="cc-number" aria-label="Number"
@@ -160,6 +160,8 @@
                                                 inputmode="numeric" maxlength="20" minlength="1">
                                         </div>
                                     </div>
+
+                                                                            <img class="vendor-badge" src="/assets/images/stripe-badge.svg" />
                                 </div>
                             </div>
                     </div>
