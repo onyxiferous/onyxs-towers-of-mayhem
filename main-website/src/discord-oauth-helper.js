@@ -36,7 +36,7 @@ const data = JSON.parse(text);
             return;
         }
         const profilePicture = upperPaymentSection.querySelector('.emblem.profile-picture')
-        const buttonText = loginButton.querySelector('span.buttonText')
+        const buttonText = loginButton.querySelector('span.button-text')
 
         const avatarUrl = data.avatar
     ? `https://cdn.discordapp.com/avatars/${data.discordId}/${data.avatar}.png`
