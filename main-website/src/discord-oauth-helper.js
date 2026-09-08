@@ -35,7 +35,7 @@ const data = JSON.parse(text);
             console.log('Not logged in');
             return;
         }
-        const profilePicture = upperPaymentSection.querySelector('.profilePicture')
+        const profilePicture = upperPaymentSection.querySelector('.emblem.profile-picture')
         const buttonText = loginButton.querySelector('span.buttonText')
 
         const avatarUrl = data.avatar
