@@ -4,14 +4,12 @@ const lowerPaymentSection = document.querySelector('#lower-payment-section')
 const upperPaymentSection = document.querySelector('#upper-payment-section')
 
 if (params.get('discord_login') === 'success') {
-    // Remove the query parameter from the address bar
     window.history.replaceState(
         {},
         document.title,
         '/bot'
     );
 
-    // Ask the API for the logged-in Discord user
     loadDiscordUser();
 }
 
@@ -36,7 +34,7 @@ const data = JSON.parse(text);
             return;
         }
         const profilePicture = upperPaymentSection.querySelector('.emblem.profile-picture')
-        const buttonText = loginButton.querySelector('span.button-text')
+        const buttonText = loginButton.querySelector('.button-text')
 
         const avatarUrl = data.avatar
     ? `https://cdn.discordapp.com/avatars/${data.discordId}/${data.avatar}.png`
