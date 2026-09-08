@@ -32,10 +32,8 @@
     cursor: not-allowed !important;
 }
 
-.payment-section[disabled] * {
-    color: #888;
-}
-
+.payment-section[disabled] *,
 .list-consolidated[disabled] * {
     color: #888;
+        cursor: not-allowed !important;
 }
