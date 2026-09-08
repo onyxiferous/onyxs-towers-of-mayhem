@@ -5,6 +5,8 @@ const lowerPaymentSection = document.querySelector('#lower-payment-section')
 const upperPaymentSection = document.querySelector('#upper-payment-section')
         const profilePicture = upperPaymentSection.querySelector('.emblem.profile-picture')
 
+
+
 if (params.get('discord_login') === 'success') {
     window.history.replaceState(
         {},
@@ -44,9 +46,9 @@ const data = JSON.parse(text);
         upperPaymentSection.setAttribute('disabled', false)
                 lowerPaymentSection.removeAttribute('disabled');
                 upperPaymentSection.classList.add('collapsed')
-profilePicture.innerHTML = avatarUrl
-buttonText.textContent = `for ${data.username}`
-profilePicture.setAttribute('hidden', false)
+profilePicture.src = avatarUrl
+buttonText.firstChild.nodeValue = `for ${data.username}`
+        profilePicture.hidden = false;
 
     } catch (error) {
         console.error('Failed to check Discord login:', error);
