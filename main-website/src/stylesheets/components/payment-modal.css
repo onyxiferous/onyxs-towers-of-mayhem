@@ -1,8 +1,8 @@
 .card-code {
-    width: 3rem;
+    width: 2rem;
 }
 
-.card-promo {
+.card-promo, card-name {
     width: 5em;
 }
 
@@ -10,13 +10,14 @@
     width: 3rem;
 }
 
-.card-number, .card-name {
+.card-name {
     width: 8rem;
 }
 
 .payment-section {
     flex-direction: row !important;  
     justify-content: space-between;
+    transition: color 400ms;
 }
 
 .payment-section .modal-item {

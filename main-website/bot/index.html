@@ -114,18 +114,6 @@
                                                 placeholder="0000 0000 0000 0000" pattern="\d*" maxlength="19">
                                         </div>
 
-                                        <div class="input-box-holder compact modal-item">
-                                            <div class="block-sub-section">
-                                                <small>Card name</small>
-                                                <small sub>Legal name if possible.</small>
-                                            </div>
-                                            <input class="card-name input-box" type="text" id="card-name"
-                                                name="cardholder-name" autocomplete="cc-name"
-                                                placeholder="John/Jane Doe" maxlength="35" required>
-
-
-                                        </div>
-
 
                                         <!-- Expiration Date Field -->
                                         <div class="input-box-holder compact modal-item">
@@ -139,15 +127,28 @@
                                                 autocomplete="cc-exp" required>
                                         </div>
 
+                                                                                <div class="input-box-holder compact modal-item">
+                                            <div class="block-sub-section">
+                                                <small>Card name</small>
+                                                <small sub>Legal name if possible.</small>
+                                            </div>
+                                            <input class="card-name input-box" type="text" id="card-name"
+                                                name="cardholder-name" autocomplete="cc-name"
+                                                placeholder="Jane Doe" maxlength="35" required>
+
+
+                                        </div>
+
+
                                         <!-- Security Code Field (Fixed nesting) -->
                                         <div class="input-box-holder compact modal-item">
                                             <div class="block-sub-section">
                                                 <small>Security code</small>
-                                                <small sub>Usually 3 or 4 numbers on the back.</small>
+                                                <small sub>3 or 4 numbers on the back.</small>
                                             </div>
                                             <input class="card-code input-box" type="text" id="cvv" name="cvv"
                                                 inputmode="numeric" pattern="[0-9]{3,4}" maxlength="4" minlength="3"
-                                                autocomplete="cc-csc" placeholder="000[0]" required>
+                                                autocomplete="cc-csc" placeholder="000" required>
                                         </div>
 
                                         <div class="input-box-holder compact modal-item">
