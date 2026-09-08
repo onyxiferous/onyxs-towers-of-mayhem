@@ -52,7 +52,7 @@ h1 {
 
 /* Style for buttons */
 
-button {
+button, .link-button {
     background-color: var(--default-theme_bg-secondary);
     border: 1px solid var(--default-theme_border-primary);
 }

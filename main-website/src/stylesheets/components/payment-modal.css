@@ -34,6 +34,10 @@ width: 8rem;
     flex-direction: column;
 }
 
+#upper-payment-section .link-button {
+    white-space: nowrap;
+}
+
 .list-consolidated {
     display: flex;
     width: 100%;

@@ -35,6 +35,8 @@ const data = JSON.parse(text);
             console.log('Not logged in');
             return;
         }
+        const profilePicture = upperPaymentSection.querySelector('.emblem.profilePicture')
+        const buttonText = loginButton.querySelector('span.buttonText')
 
         const avatarUrl = data.avatar
     ? `https://cdn.discordapp.com/avatars/${data.discordId}/${data.avatar}.png`
@@ -44,14 +46,9 @@ const data = JSON.parse(text);
         upperPaymentSection.setAttribute('disabled', false)
                 lowerPaymentSection.removeAttribute('disabled');
                 upperPaymentSection.classList.add('collapsed')
-loginButton.innerHTML = `
-    <img
-        src="${avatarUrl}"
-        alt="${data.username}"
-        class="discord-avatar"
-    >
-    <span>${data.username}</span>
-`;
+profilePicture.innerHTML = avatarUrl
+buttonText.innerHTML = `for ${data.username}`
+buttonText.setAttribute('hidden', false)
 
     } catch (error) {
         console.error('Failed to check Discord login:', error);

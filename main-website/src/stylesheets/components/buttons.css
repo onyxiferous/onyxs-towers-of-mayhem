@@ -3,14 +3,23 @@
 /* Padding */
 
 :root {
-    --button-padding_default: var(--spacing_cozy);
+    --button-padding_default: var(--spacing_compact);
 }
 
-button {
-    padding: calc(var(--button-padding_default) / 2) var(--button-padding_default);
+button, .link-button {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing_balanced);
+    padding: var(--button-padding_default);
 }
 
-button:disabled {
+button .link-emblem, .link-button .emblem {
+    width: 2em;
+    height: 2em;
+    object-fit: contain;
+}
+
+button:disabled, .link-button:disabled {
     color: #504e4e;
     border: 1px dashed #504e4e;
 }
