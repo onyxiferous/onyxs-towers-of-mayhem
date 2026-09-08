@@ -45,7 +45,7 @@ const data = JSON.parse(text);
                 lowerPaymentSection.removeAttribute('disabled');
                 upperPaymentSection.classList.add('collapsed')
 profilePicture.innerHTML = avatarUrl
-buttonText.innerHTML = `for ${data.username}`
+buttonText.textContent = `for ${data.username}`
 profilePicture.setAttribute('hidden', false)
 
     } catch (error) {
