@@ -13,7 +13,7 @@
 
 /* Fix to conserve/fill space for small screens */
 
-@media (max-width: 450px) {
+@media screen and (width <= 450px) {
     #bot-metadata {
         width: fit-content;
     }

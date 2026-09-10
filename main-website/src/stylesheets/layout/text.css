@@ -1,0 +1,169 @@
+/* ========================== */
+
+/* Font size correction */
+
+h1, h2, h3, h4, h5, h6,
+big, p, small,
+button {
+    overflow-wrap: break-word;
+}
+
+h1    {  font-size: clamp(var(--font-size-xl), var(--font-scaling-peak) + var(--font-scaling-size-reference), var(--font-size-xxl))  }
+h2    {  font-size: clamp(var(--font-size-l), var(--font-scaling-peak) + var(--font-scaling-size-reference), var(--font-size-xl))  }
+h3    {  font-size: clamp(var(--font-size-m), var(--font-scaling-peak) + var(--font-scaling-size-reference), var(--font-size-l))  }
+h4    {  font-size: clamp(var(--font-size-s), var(--font-scaling-peak) + var(--font-scaling-size-reference), var(--font-size-m))  }
+h5    {  font-size: clamp(var(--font-size-xs), var(--font-scaling-peak) + var(--font-scaling-size-reference), var(--font-size-s))  }
+h6    {  font-size: clamp(var(--font-size-xs), var(--font-scaling-peak) + var(--font-scaling-size-reference), var(--font-size-xs))  }
+
+big {  font-size: clamp(var(--font-size-l), var(--font-scaling-peak) + var(--font-scaling-size-reference), var(--font-size-xl))  }
+p, a, span.mixed-text {  font-size: clamp(var(--font-size-baseline), var(--font-scaling-peak) + var(--font-scaling-size-reference), var(--font-size-content))  }
+small {  font-size: clamp(var(--font-size-xs), var(--font-scaling-peak) + var(--font-scaling-size-reference), var(--font-size-s))  }
+
+button, .details-panel *, caption, small {  font-size: clamp(var(--font-size-baseline), var(--font-scaling-peak) + var(--font-scaling-size-reference), var(--font-size-component))  }
+
+small[sub] {
+    color: grey;
+    font-size: small;
+}
+
+/* ========================== */
+
+/* Culling class to automatically fit height/width to the actual size. */
+
+/* This is especially useful for hyperlinks and text because they can sometimes have stray margin left over. */
+
+.cull {
+    align-self: flex-start;
+    height: max-content;
+}
+
+/* Hyperlink decorations and janky flex fixes */
+
+:any-link:not([preserve-style]) {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ========================== */
+
+/* Code blocks */
+
+code, input {
+    font-family: 'Monaspace Krypton', monospace;
+    background: #302421;
+    border-radius: 2px;
+    padding: 2px 4px; 
+    border: 1px solid #4f4440;
+    color: #FFF;
+}
+
+/* Inline mixed text fix */
+
+span.mixed-text {
+    display: inline;
+}
+
+span.mixed-text p,
+span.mixed-text code {
+    display: inline;
+    margin: 0;
+}
+
+/* Headings and flavor text */
+
+h1 span {
+    display: inline-block;
+}
+
+h1 span::first-letter {
+    color: var(--default-theme-fg-primary);
+}
+
+.flavor-text,
+.headline,
+h1,
+h2,
+h3,
+h4 {
+    width: fit-content;
+}
+
+.flavor-text {
+    position: relative;
+}
+
+/* First-letter anchor */
+
+.first-letter {
+    font-family: inherit;
+    position: relative;
+    display: inline-block;
+    color: var(--default-theme-fg-primary);
+}
+
+/* All rings */
+
+.first-letter::before, .first-letter::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0.9em;
+    height: 0.9em;
+    pointer-events: none;
+        border-radius: 4px;
+}
+
+/* Inner ring */
+
+.first-letter::before {
+    border: 1px dashed var(--default-theme-fg-tertiary);
+    animation: flavor-ring-forward 20s linear infinite;
+    opacity: 0.5;
+}
+
+/* Outer ring */
+
+.first-letter::after {
+    position: absolute;
+    border: 2px dashed var(--default-theme-fg-tertiary);
+        background: color-mix(in oklab, var(--default-theme-fg-tertiary), black 30%);
+    animation: flavor-ring-backward 10s linear infinite;
+    opacity: 0.5;
+}
+
+/* Clockwise */
+
+@keyframes flavor-ring-forward {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    }
+
+    50% { 
+        transform: translate(-50%, -50%) rotate(180deg) scale(0.95);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg) scale(1);
+    }
+}
+
+/* Counter-clockwise */
+
+@keyframes flavor-ring-backward {
+    0% {
+        transform: translate(-50%, -50%) rotate(360deg) scale(0.9);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) rotate(180deg) scale(1);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(0.9);
+    }
+}
+
+/* ========================== */

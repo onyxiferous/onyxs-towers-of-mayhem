@@ -1,0 +1,17 @@
+*:focus {
+    animation: focus-flicker 400ms cubic-bezier(0.250, 0.250, 0.015, 1.065) infinite alternate;
+}
+
+/* Animation for the brief flicker when focused */
+
+@keyframes focus-flicker {
+    from {
+        outline: 1px solid white;
+        outline-offset: -2px;
+    }
+
+    to {
+        outline: 1px dotted var(--default-theme-bg-tertiary);
+        outline-offset: 2px;
+    }
+}

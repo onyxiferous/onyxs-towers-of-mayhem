@@ -1,18 +1,18 @@
-const sillyCat = document.getElementById('sillycat')
+const sillyCat = document.getElementById('sillycat');
 
 function explodeSelf() {
-    const zabluetooth = document.createElement('audio')
-    const scream = document.createElement('audio')
+    const zabluetooth = document.createElement('audio');
+    const scream = document.createElement('audio');
 
-    zabluetooth.src = '/assets/audio/tower-win.mp3'
-    scream.src = '/assets/audio/scream.mp3'
+    zabluetooth.src = '/assets/audio/tower-win.mp3';
+    scream.src = '/assets/audio/scream.mp3';
     zabluetooth.play();
 
     setTimeout(() => {
         zabluetooth.pause();
         zabluetooth.remove();
         scream.play();
-        sillyCat.classList.add('agony')
+        sillyCat.classList.add('agony');
 
         setTimeout(() => {
             scream.pause();

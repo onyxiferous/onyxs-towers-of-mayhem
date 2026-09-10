@@ -1,28 +1,32 @@
+/* stylelint-disable custom-property-empty-line-before */
+
 /* Nippy! The default theme for the website. */
+
 /* Why'd I call it Nippy? Because it has hints of blue.
+
 And because I couldn't think of another word for 'cold'. */
 
 /* ========================== */
 
-/* Theme variables, should be formatted like <theme-name_<type->descriptor> to keep things tidy */
+/* Theme variables, should be formatted like <theme-name-<type->descriptor> to keep things tidy */
 
 :root {
-    --default-theme_bg-primary: #15151b;
-    --default-theme_bg-secondary: #1e1e29;
-    --default-theme_bg-tertiary: #292c45;
+    --default-theme-bg-primary: #15151b;
+    --default-theme-bg-secondary: #1e1e29;
+    --default-theme-bg-tertiary: #292c45;
 
-    --default-theme_fg-primary: #f1f1fc;
-    --default-theme_fg-secondary: #d2daff;
-    --default-theme_fg-tertiary: #a7aef3;
+    --default-theme-fg-primary: #f1f1fc;
+    --default-theme-fg-secondary: #d2daff;
+    --default-theme-fg-tertiary: #a7aef3;
 
-    --default-theme_border-primary: #40485b;
+    --default-theme-border-primary: #40485b;
 
-    --default-theme_scroller-track: #212024;
-    --default-theme_scroller-thumb: #7a5e56;
-    --default-theme_scroller-thumb-over: #ff9151;
+    --default-theme-scroller-track: #212024;
+    --default-theme-scroller-thumb: #7a5e56;
+    --default-theme-scroller-thumb-over: #ff9151;
 
-    --default-theme_text-font: 'Chakra Petch'; 
-    --default-theme_header-font: 'Gugi'; 
+    --default-theme-text-font: 'Chakra Petch'; 
+    --default-theme-header-font: 'Gugi'; 
 }
 
 /* ========================== */
@@ -30,53 +34,52 @@ And because I couldn't think of another word for 'cold'. */
 /* Background color */
 
 body {
-    background-color: var(--default-theme_bg-primary);
+    background-color: var(--default-theme-bg-primary);
 }
 
 /* Moz/old scrollbar fallback */ 
 
 body, html:not([use-default]) {
-    scrollbar-color: var(--default-theme_scroller-thumb) var(--default-theme_scroller-track);
+    scrollbar-color: var(--default-theme-scroller-thumb) var(--default-theme-scroller-track);
 }
 
 /* Foreground color for most elements */
 
-p, h2, h3, h4, h5, h6, small, input,
+p, h2, h3, h4, h5, h6, small, input, span,
 button, span.mixed-text {
-    color: var(--default-theme_fg-primary);
+    color: var(--default-theme-fg-primary);
 }
 
 h1 { 
-    color: var(--default-theme_fg-tertiary)
+    color: var(--default-theme-fg-tertiary)
 }
 
 /* Style for buttons */
 
 button, .link-button {
-    background-color: var(--default-theme_bg-secondary);
-    border: 1px solid var(--default-theme_border-primary);
+    background-color: var(--default-theme-bg-secondary);
+    border: 1px solid var(--default-theme-border-primary);
 }
 
 /* Inputs */
 
 .input-box {
-    background-color: var(--default-theme_bg-secondary);
-    border: 1px dashed var(--default-theme_border-primary);
+    background-color: var(--default-theme-bg-secondary);
+    border: 1px dashed var(--default-theme-border-primary);
     border-radius: 0 0 8px;
 }
 
 /* ========================== */
 
 /* Fontsetting */
-/* /base/fonts.css MUST be linked to the HTML to take effect. */
 
-p, caption, small, span.mixed-text, button {
-  filter: url(#crispify);
-    font-family: var(--default-theme_text-font);
+p, caption, small, span.mixed-text, button, span {
+    font-family: var(--default-theme-text-font);
 }
 
-h1, h2, h3, h4, h5, h6, big {
-    font-family: var(--default-theme_header-font);
+h1, h2, h3, h4, h5, h6, big,
+.flavor-text, .flavor-text span, .heading {
+    font-family: var(--default-theme-header-font);
 }
 
 /* ========================== */
@@ -84,15 +87,15 @@ h1, h2, h3, h4, h5, h6, big {
 /* Custom scrollbar colors */
 
 body:not([use-default]) ::-webkit-scrollbar-track {
-  background: var(--default-theme_scroller-track);
+  background: var(--default-theme-scroller-track);
 }
 
 body:not([use-default]) ::-webkit-scrollbar-thumb {
-  background-color: var(--default-theme_scroller-thumb);
+  background-color: var(--default-theme-scroller-thumb);
 }
 
 body:not([use-default]) ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--default-theme_scroller-thumb-over);
+  background-color: var(--default-theme-scroller-thumb-over);
 }
 
 /* ========================== */

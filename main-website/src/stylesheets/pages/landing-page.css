@@ -1,15 +1,12 @@
-/* ========================== */
-
 /* Fake browser elements */
 
 #fake-browse {
     background: linear-gradient(
         0deg,
-        rgba(34, 87, 214, 1) 0%,
-        rgba(36, 93, 219, 1) 100%
+        #2257D6 0%,
+        #245DDB 100%
     );
-
-    box-shadow: inset 3px 2px 0 1px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 3px 2px 0 1px #00000080;
 }
 
 #browse-text {
@@ -23,14 +20,13 @@
 #browse-text-bar {
     flex: 1 1 auto;
     min-width: 0;
-
-    font-size: var(--font-size_component);
+    font-size: var(--font-size-component);
     background: darkgrey;
-    color: rgb(49, 48, 48);
+    color: #313030;
     border: 1px solid black;
-    box-shadow: inset 3px 2px 0 1px rgba(0, 0, 0, 0.5);
-    margin: var(--spacing_tight);
-    padding: var(--spacing_tight) var(--spacing_balanced);
+    box-shadow: inset 3px 2px 0 1px #00000080;
+    margin: var(--spacing-tight);
+    padding: var(--spacing-tight) var(--spacing-balanced);
 }
 
 #browse-bar {
@@ -41,29 +37,30 @@
 }
 
 #browse-search {
-    background: rgb(103, 122, 230);
-    color: rgb(245, 229, 229);
-    box-shadow: inset 3px 2px 0 1px rgba(0, 0, 0, 0.5);
+    background: #677AE6;
+    color: #F5E5E5;
+    box-shadow: inset 3px 2px 0 1px #00000080;
 }
 
 #bookmarks-bar {
-  background: rgb(28, 28, 28);
+    background: #1C1C1C;
+    flex-direction: row;
+    display: flex;
 }
 
 #browse-close {
     flex: 0 0 35px;
-
     height: 100%;
     color: white;
-    background: rgb(240, 48, 48);
-    box-shadow: inset 3px 2px 0 1px rgba(0, 0, 0, 0.5);
+    background: #F03030;
+    box-shadow: inset 3px 2px 0 1px #00000080;
 }
 
 /* Fake webpage scaling */
 
 #fake-dialog-box {
     width: 100%;
-    max-width: var(--max-width_extrawide);
+    max-width: var(--max-width-extrawide);
     min-width: 0;
     margin: 0 auto;
     padding-bottom: 8px;
@@ -72,29 +69,25 @@
 }
 
 #fake-web-content {
-  margin: var(--spacing_balanced) var(--margin_small);
+    margin: var(--spacing-balanced) var(--margin-small);
 }
 
 /* Abolish the fake webpage on smart fridges */
 
- @media screen and (max-width: 400px)  {
-  #fake-browse {
-    display: none;
-  }
+@media screen and (width <= 400px) {
+    #fake-browse {
+        display: none;
+    }
 
-  body {
-    outline: none;
-  }
- }
-
-/* ========================== */
+    body {
+        outline: none;
+    }
+}
 
 /* Small screen margin fix */
 
- @media screen and (max-width: 1200px)  {
-  body {
-   margin: 8px;
-  }
- }
-
- /* ========================== */
+@media screen and (width <= 1200px) {
+    body {
+        margin: 8px;
+    }
+}

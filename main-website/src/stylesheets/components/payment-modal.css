@@ -1,16 +1,15 @@
+/* Field widths */
+
 .card-code { width: 2rem }
 .card-promo, card-name { width: 5em }
 .card-expiration { width: 3rem }
+.card-name { width: 8rem }
 
-.card-name {
-
-width: 8rem;
-
-}
+/* Payment sections */
 
 .payment-section .block-inner-section {
     padding: 2px;
-    gap: var(--margin_small);
+    gap: var(--margin-small);
 }
 
 .payment-section[disabled],
@@ -38,6 +37,20 @@ width: 8rem;
     white-space: nowrap;
 }
 
+#lower-payment-section .block-sub-section { margin-bottom: 8px; }
+
+#lower-payment-section .modal-item .block-sub-section {
+    gap: var(--spacing-tight);
+    display: flex;
+    flex-direction: column;
+}
+
+#lower-payment-section.block-inner-section {
+    justify-content: space-between;
+}
+
+/* Lists within the payment section */
+
 .list-consolidated {
     display: flex;
     width: 100%;
@@ -47,11 +60,3 @@ width: 8rem;
     line-break: strict;
     min-width: 200px;
 }
-
-#lower-payment-section .modal-item .block-sub-section {
-    gap: var(--spacing_tight);
-    display: flex;
-    flex-direction: column;
-}
-
-#lower-payment-section .block-sub-section { margin-bottom: 8px }

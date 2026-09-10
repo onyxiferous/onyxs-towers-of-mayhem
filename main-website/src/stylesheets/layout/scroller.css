@@ -1,6 +1,4 @@
-/* Accessibility feature included: ScrollLock to remove the custom scroll bar.
-
-/* ========================== */
+/* Accessibility feature included: ScrollLock to remove the custom scroll bar. */
 
 body:not([use-default]) ::-webkit-scrollbar {
   width: 10px;
@@ -13,5 +11,3 @@ body:not([use-default]) ::-webkit-scrollbar-thumb {
 }
 
 /* Colors of the scroll bar are managed in /themes/ rather than being managed in here. */
-
-/* ========================== */

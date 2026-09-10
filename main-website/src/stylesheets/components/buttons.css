@@ -2,15 +2,11 @@
 
 /* Padding */
 
-:root {
-    --button-padding_default: var(--spacing_compact);
-}
-
 button, .link-button {
     display: flex;
     align-items: center;
-    gap: var(--spacing_balanced);
-    padding: var(--button-padding_default);
+    gap: var(--spacing-balanced);
+     padding: var(--spacing-compact);
 }
 
 button .link-emblem, .link-button .emblem {

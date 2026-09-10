@@ -1,0 +1,24 @@
+.details-panel * {
+    padding: 2px 4px;
+    background: linear-gradient(
+        0deg,
+        #0F0F0F 0%,
+        #1A1A1A00 100%
+    );
+    border-radius: 4px;
+}
+
+.details-panel h2 {
+    color: #C1C1C1;
+}
+
+.details-panel {
+    background: #131314;
+    border: 1px solid #38444F;
+    padding: 8px;
+    border-radius: 4px;
+    color: #848484;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}

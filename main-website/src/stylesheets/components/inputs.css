@@ -3,26 +3,24 @@
 /* Padding */
 
 :root {
-    --input-padding_default: var(--spacing_cozy);
+    --input-padding-default: var(--spacing-cozy);
 }
 
 .input-box {
-    padding: calc(var(--input-padding_default) / 2) var(--input-padding_default);
+    padding: calc(var(--input-padding-default) / 2) var(--input-padding-default);
 }
 
 /* For autofill */
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus,
 input:autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
 input:autofill:hover,
 input:autofill:focus {
-  -webkit-box-shadow: 0 0 0px 1000px var(--default-theme_bg-secondary) inset !important;
-  box-shadow: 0 0 0px 1000px var(--default-theme_bg-tertiary) inset !important;
-  border: 1px dashed rgbvar(--default-theme_fg-tertiary) !important;
-
-  -webkit-text-fill-color: var(--default-theme_fg-secondary) !important; 
+    box-shadow: 0 0 0 1000px var(--default-theme-bg-tertiary) inset !important;
+    border: 1px dashed var(--default-theme-fg-tertiary) !important;
+    -webkit-text-fill-color: var(--default-theme-fg-secondary) !important;
 }
 
 /* ========================== */

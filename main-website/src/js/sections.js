@@ -1,8 +1,8 @@
-let cooling = false
+let cooling = false;
 
 document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', function (event) {
-        cooling = true
+        cooling = true;
         const target = document.querySelector(this.getAttribute('href'));
         const container = document.querySelector('.block-content');
 
@@ -55,7 +55,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
         target.classList.remove('section-highlight');
     }, 100);
 
-    cooling = false
+    cooling = false;
             }
             
         }
