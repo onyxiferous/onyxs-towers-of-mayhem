@@ -20,7 +20,7 @@ async function loadDiscordUser() {
 
 		enableLowerPaymentSection(data);
 	} catch (error) {
-		window.alert("Oops! Something went wrong while trying to log in: ", error);
+		window.alert(`Oops! Something went wrong while trying to log in: ${error}`);
 	}
 }
 
