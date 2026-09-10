@@ -1,4 +1,4 @@
-import { enableLowerPaymentSection } from "./payment-handler";
+import { enableLowerPaymentSection } from "./payment-handler.js";
 
 const URLSearchParams = window.URLSearchParams;
 const params = new URLSearchParams(window.location.search);
