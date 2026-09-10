@@ -1,4 +1,6 @@
+import { notifyAuthenticationChanged } from "./authentication-handoff.js";
 import { enableLowerPaymentSection } from "./payment-handler.js";
+notifyAuthenticationChanged;
 
 const URLSearchParams = window.URLSearchParams;
 const params = new URLSearchParams(window.location.search);
@@ -16,7 +18,7 @@ async function loadDiscordUser() {
 			return;
 		} 
 
-		enableLowerPaymentSection();
+		enableLowerPaymentSection(data);
 	} catch (error) {
 		window.alert("Oops! Something went wrong while trying to log in: ", error);
 	}
@@ -24,13 +26,6 @@ async function loadDiscordUser() {
 
 if (params.get("discord_login") === "success") {
 	window.history.replaceState({}, document.title, "/bot");
-
-	const channel = new window.BroadcastChannel("onyxs-towers-auth");
-
-	channel.postMessage({
-		type: "auth-changed"
-	});
-
-	channel.close();
+	notifyAuthenticationChanged();
 	loadDiscordUser();
 }
