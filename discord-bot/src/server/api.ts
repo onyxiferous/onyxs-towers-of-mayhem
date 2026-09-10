@@ -22,7 +22,10 @@ import cookieParser from 'cookie-parser';
 import crypto from 'node:crypto';
 import { logApi, logSection } from '@modules/logger.js';
 import tokens from '@private/tokens.json' with { type: 'json' };
-const { robloxApiKey, clientId, clientSecret } = tokens
+const { robloxApiKey, clientId, clientSecret, stripePrivateKey } = tokens
+
+import Stripe from 'stripe';
+const stripe = new Stripe(tokens.stripePrivateKey);
 
 const DISCORD_CALLBACK =
     'https://api.onyxs-towers.space/auth/discord/callback';
@@ -167,6 +170,70 @@ app.get('/auth/discord/callback', async (req: Request, res: Response) => {
         return res.status(500).send(
             'Discord authentication failed.'
         );
+    }
+});
+
+app.post('/payments/create-session', async (req, res) => {
+    try {
+        const sessionId = req.cookies.session_id;
+
+        if (!sessionId || !sessions.has(sessionId)) {
+            return res.status(401).json({
+                ok: false,
+                error: 'You must be logged in.'
+            });
+        }
+
+        const session = sessions.get(sessionId)!;
+
+        const prices = await stripe.prices.list({
+            lookup_keys: ['neo_monthly'],
+            active: true,
+            limit: 1,
+        });
+
+        const price = prices.data[0];
+
+        if (!price) {
+            return res.status(500).json({
+                ok: false,
+                error: 'Neo Base price is unavailable.'
+            });
+        }
+
+        const checkoutSession =
+            await stripe.checkout.sessions.create({
+                mode: 'payment',
+
+                ui_mode: 'elements',
+
+                line_items: [
+                    {
+                        price: price.id,
+                        quantity: 1,
+                    },
+                ],
+
+                metadata: {
+                    discordId: session.discordId,
+                },
+
+                return_url:
+                    'https://onyxs-towers.space/bot?payment=complete',
+            });
+
+        return res.json({
+            ok: true,
+            clientSecret: checkoutSession.client_secret,
+        });
+
+    } catch (error) {
+        console.error(error);
+
+        return res.status(500).json({
+            ok: false,
+            error: 'Could not create payment session.'
+        });
     }
 });
 

@@ -14,6 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <script src="https://js.stripe.com/clover/stripe.js"></script>
     <script defer type="module" src="/src/js/authentication-handoff.js"></script>
     <script defer type="module" src="/src/js/payment-handler.js"></script>
     <script defer type="module" src="/src/js/discord-oauth-helper.js"></script>
@@ -115,53 +116,17 @@
                                     <div id="lower-payment-section" class="block-inner-section row payment-section"
                                         disabled>
 
+ <div class="input-box-holder compact modal-item">
 
-                                        <div class="input-box-holder compact modal-item">
-                                            <div class="block-sub-section">
-                                                <small>Card number</small>
-                                                <small sub>At least 16 digits.</small>
-                                            </div>
-                                            <input class="card-number input-box" type="text" inputmode="numeric"
-                                                autocomplete="cc-number" aria-label="Number"
-                                                placeholder="0000 0000 0000 0000" pattern="\d*" maxlength="19">
-                                        </div>
+        <div class="block-sub-section">
+            <small>Card details</small>
+            <small sub>Securely handled by Stripe.</small>
+        </div>
 
+        <div id="stripe-payment-element"></div>
 
-                                        <!-- Expiration Date Field -->
-                                        <div class="input-box-holder compact modal-item">
-                                            <div class="block-sub-section">
-                                                <small>Expiration date</small>
-                                                <small sub>Can't be in the past.</small>
-                                            </div>
-                                            <input class="card-expiration input-box" id="card-exp" name="card-exp"
-                                                placeholder="MM/YY" maxlength="5"
-                                                pattern="^(0[1-9]|1[0-2])\/([0-9]{2})$" inputmode="numeric"
-                                                autocomplete="cc-exp" required>
-                                        </div>
-
-                                        <div class="input-box-holder compact modal-item">
-                                            <div class="block-sub-section">
-                                                <small>Card name</small>
-                                                <small sub>Legal name if possible.</small>
-                                            </div>
-                                            <input class="card-name input-box" type="text" id="card-name"
-                                                name="cardholder-name" autocomplete="cc-name" placeholder="Jane Doe"
-                                                maxlength="35" required>
-
-
-                                        </div>
-
-
-                                        <!-- Security Code Field (Fixed nesting) -->
-                                        <div class="input-box-holder compact modal-item">
-                                            <div class="block-sub-section">
-                                                <small>Security code</small>
-                                                <small sub>3 or 4 numbers on the back.</small>
-                                            </div>
-                                            <input class="card-code input-box" type="text" id="cvv" name="cvv"
-                                                inputmode="numeric" pattern="[0-9]{3,4}" maxlength="4" minlength="3"
-                                                autocomplete="cc-csc" placeholder="000" required>
-                                        </div>
+    </div>
+                                       
 
                                         <div class="input-box-holder compact modal-item">
                                             <div class="block-sub-section">
